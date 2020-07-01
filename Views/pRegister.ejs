@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row main-content-register bg-success text-center">
+            <div class="col-md-4 text-center company__info">
+                <span class="company__logo">
+                    <h2 class="img">
+                        <span class="fa fa-android"></span>
+                    </h2>
+                </span>
+                <div class="bank-title">
+                    <h4 class="company_title">Internet Banking</h4>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-12 login_form">
+                <div class="container-fluid">
+                    <div class="row txt">
+                        <h2>Register</h2>
+                    </div>
+                    <div class="row">
+                        <form method="POST" control="" class="form-group">
+                            <div class="row">
+                                <input type="text" name="Fullname" id="Fullname" class="form__input"
+                                    placeholder="Full name" />
+                            </div>
+
+                            <div class="form-group row datebirth">
+                                <label for="example-date-input" class="form-control col-md-3 databirth__label">Date of Birth</label>
+                                <input class="form-control col-md-9 databirth__date" type="date" value="yyyy-MM-dd"
+                                    id="example-date-input" />
+
+                            </div>
+
+                            <div class="row psw d-flex">
+                                <div class="col-md-6">
+                                    <input type="password" name="password" id="password" class="form__input psw_0"
+                                        placeholder="Password" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password" name="re-password" id="re-password" class="form__input psw_0"
+                                        placeholder="Re-Password" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="email" name="Email" id="Email" class="form__input" placeholder="Email" />
+                            </div>
+
+                            <div class="form-row identify">
+                                <div class="col-md-4 mb-3">
+                                    <label for="identify"> Identity Papers</label>
+                                    <select class="custom-select" id="identify" name="identify">
+                                        <option value="1">CMMD</option>
+                                        <option value="2">CCCD</option>
+                                        <option value="3">Passport</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="identify_num">Identify Number</label>
+                                    <input type="number" class="form-control" id="identify_num" placeholder="Last name"
+                                        value="Otto" required />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="example-date-input">Identify Date</label>
+                                    <div>
+                                        <input class="form-control" type="date" value="yyyy-MM-dd"
+                                            id="example-date-input" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="form-control custom-file">
+                                    <input type="file" class="form-group custom-file-input" id="identify_img"
+                                        name="identify_img" />
+                                    <label class="form-control custom-file-label" for="identify_img">Choose Image Identify</label>
+                                </div>
+                            </div>
+
+                            <div class="row btnsub">
+                                <input type="submit" value="Submit" class="btn" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row resgis">
+						<p>Back Login Page<a href="/"> Login Here</a></p>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!-- <script>
+            $('#identify_img').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+        </script> -->
+<script type="application/javascript">
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        $(".custom-file-label").html(fileName);
+    });
+</script>
