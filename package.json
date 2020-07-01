@@ -1,0 +1,42 @@
+{
+  "name": "doanweb02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhvu0510/DoAnWeb2.git"
+  },
+  "author": "1740439-1760003-1760331-1760467",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhvu0510/DoAnWeb2/issues"
+  },
+  "homepage": "https://github.com/anhvu0510/DoAnWeb2#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cookie-session": "^1.4.0",
+    "cron": "^1.8.2",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-validator": "^6.5.0",
+    "node-cron": "^2.0.3",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "^6.4.6",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.1.0",
+    "pg-hstore": "^2.3.3",
+    "rss-parser": "^3.8.0",
+    "sequelize": "^5.21.8"
+  }
+}
