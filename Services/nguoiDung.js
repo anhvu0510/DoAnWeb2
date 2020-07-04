@@ -35,11 +35,11 @@ NguoiDung.init(
       type: Sequelize.STRING,
       allownull: false
     },
-    kich_hoat: {
-      type: Sequelize.BOOLEAN
+    trang_thai: {
+      type: Sequelize.INTEGER
     },
-    ma_loai_nguo_dung: {
-      type: Sequelize.STRING
+    quyen_nguoi_dung: {
+      type: Sequelize.INTEGER
     }
   },
   {

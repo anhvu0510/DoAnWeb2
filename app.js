@@ -39,6 +39,7 @@ app.set("view engine", "ejs");
 
 //Route
 /*************END******************/
+app.use('/',require('./Routes/index.route'))
 app.use("/login", require("./Routes/login.route"));
 app.use("/register", require("./Routes/register.route"));
 db.sync()

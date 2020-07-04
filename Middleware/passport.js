@@ -1,6 +1,6 @@
 const Passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const NguoiDung = require("../Services/nguoiDung");
+const NguoiDung = require("../Services/nguoidung");
 
 //Login Local
 Passport.use(
@@ -15,7 +15,7 @@ Passport.use(
         .then(async nguoiDung => {
           if (
             !nguoiDung ||
-            !nguoiDung.kich_hoat ||
+            !nguoiDung.trang_thai ||
             !NguoiDung.confirmPassword(mat_khau, nguoiDung.mat_khau)
           ) {
             console.log("something went wrong");

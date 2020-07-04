@@ -1,6 +1,6 @@
 const Express = require("express");
 const Passport = require("../Middleware/passport");
-const NguoiDung = require("../Services/nguoiDung");
+const NguoiDung = require("../Services/nguoidung");
 
 const Route = Express.Router();
 
