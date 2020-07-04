@@ -1,10 +1,19 @@
 const Express = require("express");
+const Passport = require("../Middleware/passport");
+const NguoiDung = require("../Services/nguoiDung");
+
 const Route = Express.Router();
 
-Route.get("/", (req, res) => {
-  res.render("pLogin");
-}).post("/", (req, res) => {
-  res.send("post method login");
-});
+Route.route("/")
+  .get((req, res) => {
+    res.render("pLogin");
+  })
+  .post(
+    Passport.authenticate("local.login", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+      failureFlash: true
+    })
+  );
 
 module.exports = Route;
