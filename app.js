@@ -42,6 +42,12 @@ app.set("view engine", "ejs");
 app.use('/',require('./Routes/index.route'))
 app.use("/login", require("./Routes/login.route"));
 app.use("/register", require("./Routes/register.route"));
+app.use("/about", require("./Routes/about.route"));
+app.use("/blog", require("./Routes/blog.route"));
+app.use("/contact", require("./Routes/contact.route"));
+app.use("/investors", require("./Routes/investors.route"));
+app.use("/single-blog", require("./Routes/single-blog.route"));
+app.use("/our-features", require("./Routes/our-features.route"));
 db.sync()
   .then(function() {
     app.listen(port);
