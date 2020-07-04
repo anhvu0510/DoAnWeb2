@@ -3,13 +3,13 @@ const Sequelize = require("sequelize");
 const db = require("./db");
 
 const Model = Sequelize.Model;
-class Account extends Model {
-  static async findById(id) {
-    return Account.findByPk(id);
+class NguoiDung extends Model {
+  static async findById(ma_nguoi_dung) {
+    return NguoiDung.findByPk(ma_nguoi_dung);
   }
-  static async findByUsername(username) {
-    return Account.findOne({
-      where: { username }
+  static async findByUsername(ten_nguoi_dung) {
+    return NguoiDung.findOne({
+      where: { ten_nguoi_dung }
     });
   }
   static hashPassword(password) {
@@ -20,29 +20,32 @@ class Account extends Model {
   }
 }
 
-Account.init(
+NguoiDung.init(
   {
-    id: {
+    ma_nguoi_dung: {
       type: Sequelize.STRING,
       allowNull: false,
       unique: true,
       primaryKey: true
     },
-    username: {
+    ten_nguoi_dung: {
       type: Sequelize.STRING
     },
-    password: {
+    mat_khau: {
       type: Sequelize.STRING,
       allownull: false
     },
-    isActive: {
+    kich_hoat: {
       type: Sequelize.BOOLEAN
+    },
+    ma_loai_nguo_dung: {
+      type: Sequelize.STRING
     }
   },
   {
     sequelize: db,
-    modelName: "account"
+    modelName: "NguoiDung"
   }
 );
 
-module.exports = Account;
+module.exports = NguoiDung;
