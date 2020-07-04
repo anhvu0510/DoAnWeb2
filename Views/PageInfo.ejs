@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Register</title>
-</head>
+<%- include ('PageHeader.ejs') %> 
 
 <body>
     <div class="container-fluid">
@@ -19,7 +10,7 @@
                     </h2>
                 </span>
                 <div class="bank-title">
-                    <h4 class="company_title">Internet Banking</h4>
+                    <h4 class="company__title">Internet Banking</h4>
                 </div>
             </div>
             <div class="col-md-8 col-xs-12 col-sm-12 login_form">
@@ -92,7 +83,7 @@
                         </form>
                     </div>
                     <div class="row resgis">
-						<p>Back Login Page<a href="/"> Login Here</a></p>
+						<p>Back Login Page<a href="/login"> Login Here</a></p>
 					</div>
                 </div>
             </div>
@@ -100,27 +91,5 @@
     </div>
 </body>
 
-</html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-<!-- <script>
-            $('#identify_img').on('change',function(){
-                //get the file name
-                var fileName = $(this).val();
-                //replace the "Choose a file" label
-                $(this).next('.custom-file-label').html(fileName);
-            })
-        </script> -->
-<script type="application/javascript">
-    $('input[type="file"]').change(function (e) {
-        var fileName = e.target.files[0].name;
-        $(".custom-file-label").html(fileName);
-    });
-</script>
+<%- include ('PageFooter') %> 

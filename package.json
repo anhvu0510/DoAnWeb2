@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -39,6 +40,10 @@
     "pg": "^8.1.0",
     "pg-hstore": "^2.3.3",
     "rss-parser": "^3.8.0",
-    "sequelize": "^5.22.3"
+    "sequelize": "^5.22.3",
+    "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

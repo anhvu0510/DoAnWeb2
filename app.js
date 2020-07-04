@@ -2,7 +2,7 @@ const Express = require("express");
 const BodyParser = require("body-parser");
 const Passport = require("passport");
 const Session = require("express-session");
-const Flash = require("connect-flash");
+const flash = require("connect-flash");
 
 const db = require("./Services/db");
 
@@ -23,8 +23,18 @@ app.use(
   })
 );
 /*************END******************/
+app.use(flash());
 
-app.use(Flash());
+
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg')
+    res.locals.error = req.flash('error')
+    next()
+});
+
+
+
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: false }));
 app.use(Passport.initialize());
@@ -39,14 +49,27 @@ app.set("view engine", "ejs");
 
 //Route
 /*************END******************/
-app.use('/',require('./Routes/index.route'))
+app.use('/', require('./Routes/index.route'))
 app.use("/login", require("./Routes/login.route"));
 app.use("/register", require("./Routes/register.route"));
+
+
+
+app.use((req, res) => {
+  res.status(404).render('404');
+})
+ 
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).render('500')
+
+})
+
 db.sync()
-  .then(function() {
+  .then(function () {
     app.listen(port);
     console.log(`Server is listening on port ${port}`);
   })
-  .catch(function(err) {
+  .catch(function (err) {
     console.error(err);
   });

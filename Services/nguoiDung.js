@@ -12,6 +12,11 @@ class NguoiDung extends Model {
             where: { ten_nguoi_dung }
         });
     }
+    static async findByEmail(email) {
+        return NguoiDung.findOne({
+            where : {email}
+        })
+    }
     static hashPassword(password) {
         return bcrypt.hashSync(password, 10);
     }
@@ -25,11 +30,14 @@ NguoiDung.init(
         ma_nguoi_dung: {
             type: Sequelize.STRING,
             allowNull: false,
-            unique: true,
             primaryKey: true
         },
         ten_nguoi_dung: {
             type: Sequelize.STRING
+        },
+        email:{
+            type: Sequelize.STRING,
+            allowNull: false
         },
         mat_khau: {
             type: Sequelize.STRING,
@@ -44,7 +52,7 @@ NguoiDung.init(
     },
     {
         sequelize: db,
-        modelName: "NguoiDung"
+        modelName: "nguoidung"
     }
 );
 

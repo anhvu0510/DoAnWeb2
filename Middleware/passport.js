@@ -13,17 +13,14 @@ Passport.use(
     (ten_nguoi_dung, mat_khau, done) => {
       NguoiDung.findByUsername(ten_nguoi_dung)
         .then(async nguoiDung => {
-          if (
-            !nguoiDung ||
-            !nguoiDung.trang_thai ||
-            !NguoiDung.confirmPassword(mat_khau, nguoiDung.mat_khau)
-          ) {
-            console.log("something went wrong");
-            console.log("");
-            return done(null, false);
-          }
-          return done(null, nguoiDung);
-        })
+          if (!nguoiDung)
+            return done(null, false, { message: 'Account does not exist' })
+          if (!NguoiDung.confirmPassword(mat_khau, nguoiDung.mat_khau))
+            return done(null, false, { message: "Incorrect password, please check again" })
+          if (nguoiDung.trang_thai === 0)
+            return done(null, false, { message: "Please activate your account by email" })
+          return done(null, nguoiDung)
+         })
         .catch(err => done(err));
     }
   )
