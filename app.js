@@ -55,16 +55,29 @@ app.use("/register", require("./Routes/register.route"));
 
 
 
+
+
+app.use("/about", require("./Routes/about.route"));
+app.use("/blog", require("./Routes/blog.route"));
+app.use("/contact", require("./Routes/contact.route"));
+app.use("/investors", require("./Routes/investors.route"));
+app.use("/single-blog", require("./Routes/single-blog.route"));
+app.use("/our-features", require("./Routes/our-features.route"));
+
+
+
+
+
+
 app.use((req, res) => {
-  res.status(404).render('404');
+    res.status(404).render('404');
 })
- 
+
 app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).render('500')
+    console.log(err);
+    res.status(500).render('500')
 
 })
-
 db.sync()
   .then(function () {
     app.listen(port);
