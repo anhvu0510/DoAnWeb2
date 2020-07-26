@@ -4,15 +4,18 @@ const NguoiDung = require("../Services/nguoidung");
 
 const Route = Express.Router();
 
-Route.route("/")
-  .get((req, res) => {
+Route
+  .get("/", (req, res) => {
     res.render("PageLogin");
   })
-  .post(Passport.authenticate("local.login", {
-    failureRedirect: "/login",
-    failureFlash: true
-  }), (req, res) => {
-    const quyen = req.user.dataValues.quyen_nguoi_dung
+  .post("/",
+    Passport.authenticate("local.login", {
+      failureRedirect:'/login',
+      failureFlash: true
+    }),
+    (req, res) => {
+    const quyen = req.user.quyen_nguoi_dung
+   
     if (quyen === 0) {
       res.send('Trang Nguoi Dung')
     }
@@ -20,12 +23,12 @@ Route.route("/")
       res.send('Trang Nhan Vien Ngan Hang')
     }
     else if ((quyen === 2)){
-      res.send('Trang Admin Quan Ly')
+       res.redirect('/about')
     }
     else {
-      res.redirect('/')
+      res.redirect('/500')
     }
-
-  });
+    });
+ 
 
 module.exports = Route;

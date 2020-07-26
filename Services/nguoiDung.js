@@ -13,6 +13,7 @@ class NguoiDung extends Model {
         });
     }
     static async findByEmail(email) {
+        
         return NguoiDung.findOne({
             where : {email}
         })
