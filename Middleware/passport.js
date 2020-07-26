@@ -2,6 +2,8 @@ const Passport = require("passport");
 const localStrategy  = require("passport-local").Strategy;
 const NguoiDung = require("../Services/nguoidung");
 const asyncHandler = require('express-async-handler')
+
+
 //Passport Init:
 Passport.serializeUser(function (nguoiDung, done) {
   return done(null, nguoiDung.ma_nguoi_dung);

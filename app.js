@@ -1,9 +1,8 @@
 const Express = require("express");
 const BodyParser = require("body-parser");
-const Passport = require("passport");
+const Passport = require('./Middleware/passport')
 const Session = require("express-session");
 const flash = require("connect-flash");
-
 const db = require("./Services/db");
 
 const app = Express();
@@ -39,7 +38,6 @@ app.use(Passport.session());
 
 
 
-
 // Session
 
 app.use(flash());
@@ -59,20 +57,19 @@ app.use((req, res, next) => {
 
 //Route
 /*************END******************/
-app.use('/', require('./Routes/index.route'))
-
-app.use("/about", require("./Routes/about.route"));
-app.use("/blog", require("./Routes/blog.route"));
-app.use("/contact", require("./Routes/contact.route"));
-app.use("/investors", require("./Routes/investors.route"));
-app.use("/single-blog", require("./Routes/single-blog.route"));
-app.use("/our-features", require("./Routes/our-features.route"));
 
 
+// app.use("/about", require("./Routes/about.route"));
+// app.use("/blog", require("./Routes/blog.route"));
+// app.use("/contact", require("./Routes/contact.route"));
+// app.use("/investors", require("./Routes/investors.route"));
+// app.use("/single-blog", require("./Routes/single-blog.route"));
 
+app.use('/', require('./Routes/home.route'))
 app.use("/login", require("./Routes/login.route"));
 app.use("/register", require("./Routes/register.route"));
-
+app.use("/logout", require("./Routes/logout.route"));
+app.use("/features", require("./Routes/features.route"));
 
 app.use((req, res) => {
     res.status(404).render('404');

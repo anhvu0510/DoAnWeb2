@@ -17,7 +17,7 @@ Route
     const quyen = req.user.quyen_nguoi_dung
    
     if (quyen === 0) {
-      res.send('Trang Nguoi Dung')
+      res.redirect('/features')
     }
     else if (quyen === 1) {
       res.send('Trang Nhan Vien Ngan Hang')
