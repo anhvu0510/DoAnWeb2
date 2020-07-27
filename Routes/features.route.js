@@ -1,13 +1,20 @@
 const Express = require('express')
-const Route = Express.Router();
+const Router = Express.Router();
 const {authentication} = require('../Middleware/auth');
-const { Router } = require('express');
 
 
-Route.use(authentication)
-Route.get('/', (req, res) => {
+
+Router.use(authentication)
+
+Router.get('/', (req, res) => {
     res.render('PageFeatures')
 })
 
+Router.use('/history',require('./history.route'))
+Router.use('/bank-transfer',require('./banktransfer.route'))
+Router.use('/bank-saving',require('./banksaving.route'))
+Router.use('/customer',require('./customer.route'))
+Router.use('/account',require('./account.route'))
 
-module.exports = Route
+
+module.exports = Router

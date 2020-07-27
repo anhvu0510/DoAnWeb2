@@ -1,20 +1,26 @@
 const Express = require("express");
 const BodyParser = require("body-parser");
-const Passport = require('./Middleware/passport')
+const Passport = require('passport')
 const Session = require("express-session");
 const flash = require("connect-flash");
 const db = require("./Services/db");
+const path = require('path');
+
 
 const app = Express();
+//Port
 const port = process.env.PORT || 3000;
-
-app.use(Express.static("Public"));
-app.use(BodyParser.urlencoded({ extended: false }));
-
 //View Engine
-app.set("views", "./Views");
-app.set("view engine", "ejs");
+// app.set("views", "./Views");
+// app.set("view engine", "ejs");
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'Views'));
+
+
+//app.use(Express.static('Public'));
+//app.use(Express.static(__dirname + '/public'));
+app.use(Express.static(path.join(__dirname, 'Public')))
 app.use(
   Session({
     secret: "secured_key",
@@ -23,23 +29,17 @@ app.use(
       keys: ["123"],
       maxAge: 24 * 60 * 60 * 1000
     },
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false
   })
 );
-
-
-app.use(BodyParser.json());
 app.use(Passport.initialize());
 app.use(Passport.session());
 
+app.use(BodyParser.urlencoded({ extended: false }));
+app.use(BodyParser.json());
+
 /*************END******************/
-
-
-
-
-// Session
-
 app.use(flash());
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg')
@@ -49,8 +49,9 @@ app.use((req, res, next) => {
 });
 
 
-//Middleware
 
+
+//Middleware
 
 
 /*************END******************/

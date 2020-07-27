@@ -8,7 +8,7 @@ class NguoiDung extends Model {
         return NguoiDung.findByPk(ma_nguoi_dung);
     }
     static async findByUsername(ten_nguoi_dung) {
-        return NguoiDung.findOne({
+        return await NguoiDung.findOne({
             where: { ten_nguoi_dung }
         });
     }

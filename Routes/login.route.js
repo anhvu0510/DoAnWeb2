@@ -1,5 +1,5 @@
 const Express = require("express");
-const Passport = require("../Middleware/passport");
+const passport = require("../Middleware/passport");
 const NguoiDung = require("../Services/nguoidung");
 
 const Route = Express.Router();
@@ -9,7 +9,7 @@ Route
     res.render("PageLogin");
   })
   .post("/",
-    Passport.authenticate("local.login", {
+    passport.authenticate("local.login", {
       failureRedirect:'/login',
       failureFlash: true
     }),

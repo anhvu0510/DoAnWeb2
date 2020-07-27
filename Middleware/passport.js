@@ -9,16 +9,14 @@ Passport.serializeUser(function (nguoiDung, done) {
   return done(null, nguoiDung.ma_nguoi_dung);
 });
 
-Passport.deserializeUser(asyncHandler(async function (ma_nguoi_dung, done) {
-  NguoiDung.findById(ma_nguoi_dung)
+Passport.deserializeUser((ma_nguoi_dung, done)=> {
+   NguoiDung.findById(ma_nguoi_dung)
     .then((nguoiDung) => {
       return done(null, nguoiDung);
     })
-    .catch(() => done(null, false));
-}));
-
-
-
+    .catch((err) => console.log(err + ''));
+});
+  
 
 
 //Login Local
