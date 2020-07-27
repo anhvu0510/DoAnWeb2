@@ -1,6 +1,7 @@
-const bcrypt = require("bcrypt");
-const Sequelize = require("sequelize");
-const db = require("./db");
+const bcrypt = require('bcrypt');
+const Sequelize = require('sequelize');
+const db = require('./db');
+const accounttype = require('./accounttype');
 
 const Model = Sequelize.Model;
 class Account extends Model {
@@ -9,12 +10,12 @@ class Account extends Model {
   }
   static async findByUsername(user_name) {
     return await Account.findOne({
-      where: { user_name }
+      where: { user_name },
     });
   }
   static async findByEmail(email) {
     return Account.findOne({
-      where: { email }
+      where: { email },
     });
   }
   static hashPassword(password) {
@@ -30,35 +31,35 @@ Account.init(
     account_id: {
       type: Sequelize.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     user_name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     email: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     password: {
       type: Sequelize.STRING,
-      allownull: false
+      allownull: false,
     },
     account_type: {
       type: Sequelize.INTEGER,
-      references: { model: accounttype, key: "type" }
+      references: { model: accounttype, key: 'type' },
     },
     status: {
       type: Sequelize.INTEGER,
-      allownull: false
+      allownull: false,
     },
     permission: {
       type: Sequelize.INTEGER,
-      allownull: false
-    }
+      allownull: false,
+    },
   },
   {
     sequelize: db,
-    modelName: "account"
+    modelName: 'account',
   }
 );
 
