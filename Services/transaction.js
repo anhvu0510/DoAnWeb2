@@ -1,5 +1,6 @@
-const Sequelize = require("sequelize");
-const db = require("./db");
+const Sequelize = require('sequelize');
+const db = require('./db');
+const checkingaccount = require('./checkingaccount');
 
 const Model = Sequelize.Model;
 class Transaction extends Model {
@@ -13,34 +14,34 @@ Transaction.init(
     transcation_id: {
       type: Sequelize.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     amount: {
       type: Sequelize.DOUBLE,
-      allowNull: false
+      allowNull: false,
     },
     currency: {
       type: Sequelize.STRING,
-      allownull: false
+      allownull: false,
     },
     description: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     date: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     source_account: {
       type: Sequelize.STRING,
-      references: { model: checkingaccount, key: "account_number" }
+      references: { model: checkingaccount, key: 'account_number' },
     },
     destination_account: {
       type: Sequelize.STRING,
-      references: { model: checkingaccount, key: "account_number" }
-    }
+      references: { model: checkingaccount, key: 'account_number' },
+    },
   },
   {
     sequelize: db,
-    modelName: "transaction"
+    modelName: 'transaction',
   }
 );
 

@@ -1,5 +1,6 @@
-const Sequelize = require("sequelize");
-const db = require("./db");
+const Sequelize = require('sequelize');
+const db = require('./db');
+const account = require('./account');
 
 const Model = Sequelize.Model;
 class User extends Model {
@@ -8,17 +9,17 @@ class User extends Model {
   }
   static async findByPhoneNumber(phone_number) {
     return User.findOne({
-      where: { phone_number }
+      where: { phone_number },
     });
   }
   static async findByEmail(email) {
     return User.findOne({
-      where: { email }
+      where: { email },
     });
   }
   static async findByIdCard(id_card) {
     return User.findOne({
-      where: { id_card }
+      where: { id_card },
     });
   }
 }
@@ -28,46 +29,46 @@ User.init(
     user_id: {
       type: Sequelize.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     DOB: {
-      type: Sequelize.DATEONLY
+      type: Sequelize.DATEONLY,
     },
     gender: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     phone_number: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     email: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     address: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     id_card: {
-      type: sequelize.integer
+      type: sequelize.integer,
     },
     issue_date_for_id_card: {
-      type: Sequelize.DATEONLY
+      type: Sequelize.DATEONLY,
     },
     id_card_front_side_photo: {
-      type: Sequelize.STRING.BINARY
+      type: Sequelize.STRING.BINARY,
     },
     id_card_back_side_photo: {
-      type: Sequelize.STRING.BINARY
+      type: Sequelize.STRING.BINARY,
     },
     user_id: {
       type: Sequelize.int,
-      references: { model: account, key: "account_id" }
-    }
+      references: { model: account, key: 'account_id' },
+    },
   },
   {
     sequelize: db,
-    modelName: "user"
+    modelName: 'user',
   }
 );
 

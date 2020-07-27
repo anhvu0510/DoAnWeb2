@@ -1,5 +1,7 @@
-const Sequelize = require("sequelize");
-const db = require("./db");
+const Sequelize = require('sequelize');
+const db = require('./db');
+const account = require('./account');
+const status = require('./status');
 
 const Model = Sequelize.Model;
 class SavingsAccount extends Model {
@@ -13,43 +15,43 @@ SavingsAccount.init(
     account_number: {
       type: Sequelize.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     issue_date: {
-      type: Sequelize.DATEONLY
+      type: Sequelize.DATEONLY,
     },
     funds: {
       type: Sequelize.DOUBLE,
-      allowNull: false
+      allowNull: false,
     },
     currency: {
       type: Sequelize.STRING,
-      allownull: false
+      allownull: false,
     },
     interest_rate: {
       type: Sequelize.DECIMAL,
-      allownull: false
+      allownull: false,
     },
     term: {
       type: Sequelize.INTEGER,
-      allownull: false
+      allownull: false,
     },
     closing_date: {
       type: Sequelize.DATEONLY,
-      allownull: false
+      allownull: false,
     },
     account_id: {
       type: Sequelize.INTEGER,
-      references: { model: account, key: "account_id" }
+      references: { model: account, key: 'account_id' },
     },
     status_id: {
       type: Sequelize.INTEGER,
-      references: { model: status, key: "status_id" }
-    }
+      references: { model: status, key: 'status_id' },
+    },
   },
   {
     sequelize: db,
-    modelName: "savingsaccount"
+    modelName: 'savingsaccount',
   }
 );
 
