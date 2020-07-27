@@ -7,7 +7,7 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-family: 'Abel', sans-serif !important;
+  font-family: "Abel", sans-serif !important;
   /* display: flex;
     justify-content: center;
     align-items: center; */
@@ -36,6 +36,14 @@ a.mybtn:hover {
     display: block;
     margin: 0.2em auto;
   }
+}
+
+.home{
+  color: white;
+  outline: 0;
+}
+.home:hover{
+  color: white;
 }
 
 .content-info {
@@ -137,6 +145,7 @@ a.mybtn:hover {
 .menu-lv1 > li:hover > ul {
   visibility: visible;
   opacity: 1;
+  z-index: 1;
 }
 
 .menu-lv2 {
@@ -162,9 +171,9 @@ a.mybtn:hover {
   display: inline-block;
   width: 100%;
   background: linear-gradient(
-    to bottom,
-    #3e2bde 10%,
-    #2de3aa 70%,
+    to left,
+    #3e2bce 10%,
+    #2dd3aa 100%,
     #2dd3aa 100%,
     #2dd3aa 100%
   );
@@ -193,6 +202,7 @@ a.mybtn:hover {
 }
 .content-title {
   margin-bottom: 35px !important;
+  margin-top: 60px !important;
 }
 .content-title > h2 {
   font-size: 3.5rem;
@@ -210,12 +220,18 @@ a.mybtn:hover {
   flex-direction: column;
   align-items: center;
   border: 7px double white;
-  margin: 4px;
+  margin: 3px 30px;
   cursor: pointer;
 }
+
+
+
 .content-section-item i {
   font-size: 5rem;
+  position: relative;
 }
+
+
 
 .content-section-item > div {
   padding: 0px !important;
