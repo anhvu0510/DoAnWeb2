@@ -1,34 +1,30 @@
-const Express = require("express");
-const passport = require("../Middleware/passport");
-const NguoiDung = require("../Services/nguoidung");
+const Express = require('express');
+const passport = require('../Middleware/passport');
+const Account = require('../Services/account');
 
 const Route = Express.Router();
 
-Route
-  .get("/", (req, res) => {
-    res.render("PageLogin");
-  })
-  .post("/",
-    passport.authenticate("local.login", {
-      failureRedirect:'/login',
-      failureFlash: true
-    }),
-    (req, res) => {
-    const quyen = req.user.quyen_nguoi_dung
-   
+Route.get('/', (req, res) => {
+  res.render('PageLogin');
+}).post(
+  '/',
+  passport.authenticate('local.login', {
+    failureRedirect: '/login',
+    failureFlash: true,
+  }),
+  (req, res) => {
+    const quyen = req.user.permission;
+
     if (quyen === 0) {
-      res.redirect('/features')
+      res.redirect('/features');
+    } else if (quyen === 1) {
+      res.send('Trang Nhan Vien Ngan Hang');
+    } else if (quyen === 2) {
+      res.redirect('/about');
+    } else {
+      res.redirect('/500');
     }
-    else if (quyen === 1) {
-      res.send('Trang Nhan Vien Ngan Hang')
-    }
-    else if ((quyen === 2)){
-       res.redirect('/about')
-    }
-    else {
-      res.redirect('/500')
-    }
-    });
- 
+  }
+);
 
 module.exports = Route;

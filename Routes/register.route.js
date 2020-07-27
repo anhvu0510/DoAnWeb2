@@ -1,6 +1,6 @@
 const Express = require("express");
 const Router = Express.Router();
-const User = require('../Services/nguoidung')
+const User = require('../Services/account')
 const { check, body , validationResult} = require('express-validator');
 const uuid = require('uuid');
 
@@ -28,7 +28,7 @@ Router.get("/", (req, res) => {
         throw Error('Username already exists, Please choose another name')
       }
     }),
-  
+
   check('password')
     .isLength({min : 8}).withMessage('Password must be least 8 characters')
     .custom((value, { req }) => {
@@ -37,17 +37,17 @@ Router.get("/", (req, res) => {
       }
       return true
     })
-    
+
 ], async (req, res) => {
     //validate
     const err = validationResult(req)
     console.log(err);
-    
+
     const { email, username, password, re_password } = req.body;
     if (!err.isEmpty()) {
       const errors = err.errors;
       console.log(err);
-      
+
       res.render('PageRegister', {
         errors,
         username,
@@ -59,14 +59,14 @@ Router.get("/", (req, res) => {
     else {
       const id = uuid.v1()
       console.log(typeof id);
-    
+
       const newUser = await User.create({
-        ma_nguoi_dung : uuid.v4(),
-        ten_nguoi_dung : username,
+        account_id : uuid.v4(),
+        user_name : username,
         email : email,
-        mat_khau : User.hashPassword(password),
-        trang_thai : 0,
-        quyen_nguoi_dung : 0
+        password : User.hashPassword(password),
+        status : 0,
+        permission : 0
       })
 
       newUser
