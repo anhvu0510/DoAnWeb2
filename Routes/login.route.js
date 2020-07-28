@@ -13,7 +13,7 @@ Route.get('/', (req, res) => {
     failureFlash: true,
   }),
   (req, res) => {
-    const quyen = req.user.userRoleId;
+    const quyen = req.user.RoleID;
 
     if (quyen === 0) {
       res.redirect('/features');
