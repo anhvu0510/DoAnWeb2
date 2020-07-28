@@ -1,8 +1,10 @@
 const Sequelize = require('sequelize');
 const db = require('./db');
-const checkingaccount = require('./checkingaccount');
+const Payment = require('./payment_account');
 
 const Model = Sequelize.Model;
+
+
 class Transaction extends Model {
   static async findById(transcation_id) {
     return Transaction.findByPk(transcation_id);
@@ -30,14 +32,14 @@ Transaction.init(
     date: {
       type: Sequelize.DATE,
     },
-    source_account: {
-      type: Sequelize.STRING,
-      references: { model: checkingaccount, key: 'account_number' },
-    },
-    destination_account: {
-      type: Sequelize.STRING,
-      references: { model: checkingaccount, key: 'account_number' },
-    },
+    // source_account: {
+    //   type: Sequelize.STRING,
+    //   references: { model: checkingaccount, key: 'account_number' },
+    // },
+    // destination_account: {
+    //   type: Sequelize.STRING,
+    //   references: { model: checkingaccount, key: 'account_number' },
+    // },
   },
   {
     sequelize: db,

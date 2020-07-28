@@ -1,11 +1,11 @@
 const Passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
-const Account = require('../Services/account');
+const Account = require('../Services/user');
 const asyncHandler = require('express-async-handler');
 
 //Passport Init:
 Passport.serializeUser(function (account, done) {
-  return done(null, account.account_id);
+  return done(null, account.id);
 });
 
 Passport.deserializeUser((account_id, done) => {
@@ -33,7 +33,7 @@ Passport.use(
             return done(null, false, {
               message: 'Incorrect password, please check again',
             });
-          if (account.status === 0)
+          if (account.StatusID === 0)
             return done(null, false, {
               message: 'Please activate your account by email',
             });

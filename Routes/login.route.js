@@ -1,6 +1,6 @@
 const Express = require('express');
 const passport = require('../Middleware/passport');
-const Account = require('../Services/account');
+
 
 const Route = Express.Router();
 
@@ -13,7 +13,7 @@ Route.get('/', (req, res) => {
     failureFlash: true,
   }),
   (req, res) => {
-    const quyen = req.user.permission;
+    const quyen = req.user.userRoleId;
 
     if (quyen === 0) {
       res.redirect('/features');

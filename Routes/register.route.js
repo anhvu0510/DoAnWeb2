@@ -1,9 +1,8 @@
 const Express = require("express");
 const Router = Express.Router();
-const User = require('../Services/account')
+const User = require('../Services/user')
 const { check, body , validationResult} = require('express-validator');
 const uuid = require('uuid');
-
 
 
 
@@ -57,25 +56,22 @@ Router.get("/", (req, res) => {
       })
     }
     else {
-      const id = uuid.v1()
-      console.log(typeof id);
-
       const newUser = await User.create({
-        account_id : uuid.v4(),
+        id : uuid.v4(),
         user_name : username,
         email : email,
-        password : User.hashPassword(password),
-        status : 0,
-        permission : 0
+        password: User.hashPassword(password),
+        RoleID: parseInt(0),
+        StatusID: parseInt(0),
       })
 
       newUser
         .save()
         .then(user => {
-          req.flash('success_msg','Register successfully, you can login now')
+          req.flash('success_msg','Register successfully, Please Check your mail to activate your account ')
           res.redirect('./login')
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err + ''));
     }
     //pass
 });

@@ -1,75 +1,62 @@
+const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize');
 const db = require('./db');
-const account = require('./account');
+const Role = require('./user_role')
+const Status = require('./user_status')
 
 const Model = Sequelize.Model;
 class User extends Model {
-  static async findById(user_id) {
-    return User.findByPk(user_id);
-  }
-  static async findByPhoneNumber(phone_number) {
-    return User.findOne({
-      where: { phone_number },
-    });
-  }
-  static async findByEmail(email) {
-    return User.findOne({
-      where: { email },
-    });
-  }
-  static async findByIdCard(id_card) {
-    return User.findOne({
-      where: { id_card },
-    });
-  }
+    static async findById(id) {
+        return User.findByPk(id);
+    }
+    static async findByUsername(user_name) {
+        return await User.findOne({
+            where: { user_name },
+        });
+    }
+    static async findByEmail(email) {
+        return User.findOne({
+            where: { email },
+        });
+    }
+    static hashPassword(password) {
+        return bcrypt.hashSync(password, 10);
+    }
+    static confirmPassword(password, hashedPassword) {
+        return bcrypt.compareSync(password, hashedPassword);
+    }
 }
 
 User.init(
-  {
-    user_id: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      primaryKey: true,
+    {
+        id: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            primaryKey: true,
+        },
+        user_name: {
+            type: Sequelize.STRING,
+        },
+        email: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        password: {
+            type: Sequelize.STRING,
+            allownull: false,
+            
+        },
+       
     },
-    name: {
-      type: Sequelize.STRING,
-    },
-    DOB: {
-      type: Sequelize.DATEONLY,
-    },
-    gender: {
-      type: Sequelize.STRING,
-    },
-    phone_number: {
-      type: Sequelize.STRING,
-    },
-    email: {
-      type: Sequelize.STRING,
-    },
-    address: {
-      type: Sequelize.STRING,
-    },
-    id_card: {
-      type: sequelize.integer,
-    },
-    issue_date_for_id_card: {
-      type: Sequelize.DATEONLY,
-    },
-    id_card_front_side_photo: {
-      type: Sequelize.STRING.BINARY,
-    },
-    id_card_back_side_photo: {
-      type: Sequelize.STRING.BINARY,
-    },
-    user_id: {
-      type: Sequelize.int,
-      references: { model: account, key: 'account_id' },
-    },
-  },
-  {
-    sequelize: db,
-    modelName: 'user',
-  }
+    {
+        sequelize: db,
+        modelName: 'user',
+    }
 );
+//Role.hasMany(User,, defaultValue: 0 })
+User.belongsTo(Role, { constraints: false , foreignKey : 'RoleID'})
+//Status.hasMany(User, { constraints: false, defaultValue: 0 })
+User.belongsTo(Status, { constraints: false, foreignKey: 'StatusID' })
+
 
 module.exports = User;
