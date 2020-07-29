@@ -1,13 +1,13 @@
 const Express = require("express");
 const Router = Express.Router();
+const { SendMailActive } = require('../Services/mail')
 const User = require('../Services/user')
 const { check, body , validationResult} = require('express-validator');
 const uuid = require('uuid');
-
-
+const asyncHanler = require('express-async-handler')
 
 Router.get("/", (req, res) => {
-  res.render("PageRegister");
+  res.render("PageRegister",{title : 'Sign Up'});
 }).post("/", [
   check('email')
     .not().isEmpty().withMessage('Plaese fill in field Email')
@@ -37,7 +37,7 @@ Router.get("/", (req, res) => {
       return true
     })
 
-], async (req, res) => {
+], asyncHanler(async (req, res) => {
     //validate
     const err = validationResult(req)
     console.log(err);
@@ -48,6 +48,7 @@ Router.get("/", (req, res) => {
       console.log(err);
 
       res.render('PageRegister', {
+        title :'Sign Up',
         errors,
         username,
         email,
@@ -67,13 +68,14 @@ Router.get("/", (req, res) => {
 
       newUser
         .save()
-        .then(user => {
+        .then(asyncHanler(async (user) => {
+          await SendMailActive(email,"Active Your Account",user.id)
           req.flash('success_msg','Register successfully, Please Check your mail to activate your account ')
           res.redirect('./login')
-        })
-        .catch(err => console.log(err + ''));
+        }))
+        .catch(err => console.log(err));
     }
     //pass
-});
+}));
 
 module.exports = Router;

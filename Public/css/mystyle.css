@@ -38,11 +38,11 @@ a.mybtn:hover {
   }
 }
 
-.home{
+.home {
   color: white;
   outline: 0;
 }
-.home:hover{
+.home:hover {
   color: white;
 }
 
@@ -224,14 +224,10 @@ a.mybtn:hover {
   cursor: pointer;
 }
 
-
-
 .content-section-item i {
   font-size: 5rem;
   position: relative;
 }
-
-
 
 .content-section-item > div {
   padding: 0px !important;
@@ -249,4 +245,271 @@ a.mybtn:hover {
 }
 a {
   outline: 0;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 0px !important;
+  border: 0px !important;
+  padding: 0px !important;
+}
+.form-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-title > h2 {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+}
+.form-title > p {
+  color: white;
+  font-size: 12;
+  font-weight: bold;
+}
+
+.form-group {
+  width: 85%;
+}
+.form-main {
+  border: 5px double white;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.mycontainer {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.myinput {
+  width: 100%;
+  height: 50px;
+  border: 0px solid transparent;
+  border-radius: 5px;
+  border-bottom: 1px solid #aaa;
+  padding: 1em 0.5em 0.5em;
+  padding-left: 1em;
+  outline: none;
+  margin: 1.2em auto;
+  transition: all 0.5s ease;
+}
+
+.myinput:focus {
+  border-bottom: 3px solid #2dd3aa;
+  box-shadow: 0 0 15px rgba(0, 80, 80, 0.4);
+  border-radius: 4px;
+}
+label {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+.box {
+  width: 100%;
+  height: 300px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-img {
+  width: 100%;
+  height: 200px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-img > img {
+  padding: 2px;
+  width: 300px;
+  height: 185px;
+  border: 2px double white;
+}
+
+.box-btn > input {
+  margin-top: 5px;
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+}
+.mail {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  border: 5px double white;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.mail-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mail-title > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 20px;
+}
+.mail-title > div > img {
+  width: 400px;
+  height: 100px;
+}
+.text > p {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.box-mail {
+  height: auto;
+  margin: 10px;
+  border: 10px double white;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.mail-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mail-header > h2 {
+  color: white;
+  margin: 0px;
+  color: white;
+  text-align: inherit;
+  margin-left: 20px;
+}
+.mail-header > div {
+  color: white;
+  font-size: 4em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mail-text {
+  border: 2px double white;
+  height: auto;
+  padding: 20px;
+}
+.mail-text > span {
+  color: white;
+  font-size: 25px;
+}
+
+.mail-action {
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+}
+.checkbox-text{
+  color: white;
+  font-size: 25px;
+}
+
+.checkboxFour {
+  width: 30px;
+  height: 30px;
+  background: #ddd;
+  margin: 20px 10px;
+  border-radius: 100%;
+  position: relative;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+
+}
+.checkboxFour > input{
+  visibility: hidden;
+}
+.checkboxFour label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  background: #333;
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.checkboxFour input[type="checkbox"]:checked + label {
+  background: #26ca28;
+}
+
+.btn-accept{
+  width: 200px;
+  height: 50px;
+  border: 5px double white;
+  margin: 10px 0px;
+  background: linear-gradient(
+    to top,
+    #3e2bde 0%,
+    #2de3aa 100%,
+    #2dd3aa 100%,
+    #2dd3aa 100%
+  );
+  border-radius: 5px;
+}
+.btn-accept > a{
+  width: 100%;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  
+}
+.btn-accept:hover{
+  background: linear-gradient(
+    to left,
+    #3e2bde 0%,
+    #2de3aa 100%,
+    #2dd3aa 100%,
+    #2dd3aa 100%
+  );
+  
 }

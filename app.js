@@ -71,14 +71,16 @@ app.use("/login", require("./Routes/login.route"));
 app.use("/register", require("./Routes/register.route"));
 app.use("/logout", require("./Routes/logout.route"));
 app.use("/features", require("./Routes/features.route"));
+app.use('/update-information', require('./Routes/update_info.route'))
+
 
 app.use((req, res) => {
-    res.status(404).render('404');
+    res.status(404).render('404',{title : 'Page Not Found'});
 })
 
 app.use((err, req, res, next) => {
-    console.log(err + '');
-    res.status(500).render('500')
+    console.log(err);
+    res.status(500).render('500',{title : 'Page 500'})
 
 })
 db.sync()

@@ -7,7 +7,11 @@ const {authentication} = require('../Middleware/auth');
 Router.use(authentication)
 
 Router.get('/', (req, res) => {
-    res.render('PageFeatures')
+    res.render('PageFeatures',{title : "Features"})
+})
+
+Router.get('/test', (req, res) => {
+    res.render('PageSendMail.ejs',{title : 'Test'})   
 })
 
 Router.use('/history',require('./history.route'))

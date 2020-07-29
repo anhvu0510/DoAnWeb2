@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .gradient-bg {
+            background: -webkit-gradient(linear,
+                    left top,
+                    right top,
+                    from(#3e2bce),
+                    color-stop(100%, #2dd3aa),
+                    color-stop(100%, #2dd3aa),
+                    to(#2dd3aa));
+            background: -o-linear-gradient(left,
+                    #3e2bce 0%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%);
+            background: linear-gradient(to right,
+                    #3e2bce 0%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3e2bce', endColorstr='#2dd3aa', GradientType=1);
+        }
+
+        .mail {
+            width: 800px;
+            height: auto;
+            border: 10px double white;
+            padding: 15px;
+        }
+
+        .mail-header {
+            display: flex;
+            width: 500px;
+            justify-content: center;
+            align-items: center;
+            border: 5px double black;
+            text-align: center;
+            background-color: white;
+        }
+
+        .mail-header>h1 {
+            font-size: 4rem;
+            margin: 10px;
+        }
+
+        .btnActive:hover {
+            background: linear-gradient(to left,
+                    #3e2bde 0%,
+                    #2de3aa 100%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%);
+        }
+
+        .not-active {
+            pointer-events: none;
+            cursor: default;
+            text-decoration: none;
+            color: gray;
+            font-size: 30px; 
+            font-weight: bold; 
+            text-align: center; 
+        }
+        .active{
+            text-decoration: none;
+            color: red;
+            font-size: 30px; 
+            font-weight: bold; 
+            text-align: center; 
+        }
+    </style>
+</head>
+
+<body style="margin-left: 250px;">
+    <div class="mail gradient-bg">
+        <div class="row mail-title">
+            <div class="row mail-header">
+                <h1 style="color:#3e2bce">NET</h1>
+                <h1 style="color:#2dd3aa">BAKING</h1>
+            </div>
+            <div class="row text">
+                <p style="font-size: 20px; color: white;">Thank you for your trust and awkward use of our services</p>
+            </div>
+        </div>
+        <div class="row box-mail">
+            <div style="margin-bottom: 15px;" class="box-mail-header">
+                <h2 style="font-size: 30px; color: white;">Dear, Customer</h2>
+                <div style="font-size: 4rem; color: white; text-align: center;">Terms Of Using Website</div>
+            </div>
+            <div class="box-mail-text">
+                <span style="font-size: 20px; color: white;">
+                    This section contains the Terms of Use of this website. By accessing
+                    the website or any part of it, you agree to these Terms.
+                    <br />
+                    Do not provide financial products or services Neither a HSBC
+                    (Vietnam) limited liability bank nor any member of the HSBC group
+                    may offer any financial services or products through the use and
+                    operation of the website, or portal (hereinafter referred to as
+                    "Website"). The products and services on this Website do not
+                    constitute an offer or offer for any product or service provided by
+                    any member of the HSBC group. The information on this Website is not
+                    intended to be distributed to, or used by, any person in any country
+                    if such distribution or use is contrary to law. This Website is not
+                    intended as a way to convey any invitation or persuade customers to
+                    participate in banking or investment activities or any offer to buy
+                    or sell securities or other financial instruments outside any
+                    country where the Bank is not licensed to operate (hereinafter
+                    referred to as "Authorized Countries").
+                    <br />
+                    Not all products and services that you may find on this Website are
+                    provided in all geographical areas where HSBC Group members are
+                    operating. You should only access the local websites where you live
+                    ("Local Sites"). If you use products not mentioned on the "Local
+                    Website", you can view information about such products at this
+                    Website or other HSBC websites. The products and services mentioned
+                    outside of your Local Website may not be available in your country
+                    of residence or in Authorized Countries and may not be suitable for
+                    you. You will be solely responsible for accessing this Website and
+                    the information available on this Website for your own information
+                    and must strictly comply with the applicable laws and regulations at
+                    country concerned. Members of the HSBC Group may rely solely on your
+                    country of residence to refuse to provide products and services to
+                    you.
+                    <br />
+                    The products mentioned in this Website may not be registered or
+                    licensed at any central bank, governmental or regulatory authority
+                    in the Competent States or in the country where You reside.
+                    Accordingly, you may not be entitled to the protection of securities
+                    laws, banking laws and other relevant laws and regulations of your
+                    country of residence in respect of products and services. Mentioned
+                    on this Website.
+                    <br />
+                    The products, services or securities mentioned or accessible through
+                    this Website may not be suitable for you or any particular person.
+                    You should be aware that your use of this Website or any request for
+                    information arising from your access to this Website is not caused
+                    by the Bank or any member of the site. HSBC reserves the right to
+                    invite and at the same time provide any information through this
+                    Website will not constitute or be regarded as investment advice or
+                    financial advice.
+                    <br />
+                    The information contained on these pages is not intended to provide
+                    expert advice. Individuals visiting these sites should consult the
+                    appropriate experts.
+                    <br />
+                    Copyright and trademark The Bank and other parties are owners of the
+                    trademarks, logos and service marks displayed on this website. The
+                    use of such logos and service marks is not permitted without the
+                    written consent of the Bank or its owner.
+                    <br />
+                    The materials on this site are copyright protected. No person may
+                    modify, copy, record in electronic memory, translate, reproduce,
+                    distribute, commercially or publicly use any part of these materials
+                    without the Bank's prior written permission. Pre-approval goods in
+                    writing.
+                    <br />
+                    Not guaranteed Although the construction of the information and
+                    materials on this site has been done with utmost care, these
+                    information and materials are provided to you in the "current form"
+                    without any any warranties whether express or implied. In
+                    particular, there is no guarantee of non-infringement,
+                    confidentiality, accuracy, suitability for a particular purpose, or
+                    no computer virus related to this information and material.
+                    <br />
+                    No financial advice The information provided in the "Online
+                    Financial Library" and the "Financial and Career Programs" in this
+                    website is provided for educational and informational purposes only,
+                    without any warranties of any kind. express or implied. This
+                    information is not intended to be or constitute financial advice,
+                    investment advice, business advice or any other advice, the
+                    information is general in nature and is not specifically applicable
+                    to your case or any other person. You should not rely on the
+                    information provided at this site to make financial decisions,
+                    investment decisions, business decisions or any other decisions.
+                    Individuals visiting this site should consult with expert advice
+                    when necessary.
+                    <br />
+                    Associated websites The Bank and any other members of the HSBC group
+                    are not responsible for the content or design of any other website
+                    that links to this site. When you access and use other websites
+                    linked to this site, you will be solely at your own risk and comply
+                    with the terms and conditions of use applicable to such access /
+                    use. By providing links to other websites, the Bank is not deemed to
+                    accept, recommend, endorse, warrant or recommend to any third party
+                    or to services / products that the third party such third party
+                    offers on their website, or is not considered to be in any form of
+                    cooperation with third parties and other websites. The Bank is not a
+                    party to any contractual agreement concluded by you and the
+                    suppliers of websites other than the Bank's website unless otherwise
+                    specified or agreed by the Bank. agree.
+                    <br />
+                    Email The Bank does not guarantee that all emails sent to the Bank
+                    via the Internet will be completely secured. The Bank will not be
+                    liable for any damages suffered by the user if the user sends an
+                    email to the Bank, or if the Bank sends electronic mail to the
+                    Internet upon the request of the user. surname. The Bank assumes no
+                    responsibility whatsoever for any direct, indirect, special or
+                    consequential damages arising from the use of this website.
+                    <br />
+                    Information transmission via Internet Due to the nature of the
+                    Internet, transactions can be interrupted, lose signal transmission,
+                    slow data transfers and improper data transmission. The Bank is not
+                    responsible for functional failures of communications equipment not
+                    under the Bank's control that affect the accuracy or timing of
+                    receiving and sending mails and transactions sent by you.
+                    <br />
+                    Download We do not represent or guarantee that this website will be
+                    available and meet your requirements, that access will be
+                    uninterrupted, without delay, rejection of orders, errors, loss or
+                    cancellation. abandon the transmitted information, that no viruses
+                    or other destructive and infectious elements will be transmitted or
+                    that no damage will occur to your computer system. You are
+                    responsible for the proper protection and storage of data and / or
+                    equipment and reasonable precautions to detect viruses and other
+                    harmful elements. We also do not represent or warrant the accuracy,
+                    functionality or operation of any third party software used to link
+                    to the website.
+                    <br />
+                    <p style="padding-left: 25em; font-size: 25px; color: white;">
+                        Thank You
+                    </p>
+                </span>
+            </div>
+            <div>
+                <input id="action" type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                <label style="font-size: 25px; color: red;" for="vehicle1">I have read and agree to the bank's
+                    service</label><br>
+            </div>
+            <!-- <div class="gradient-bg btnActive"
+                style="padding: 10px; margin-left: 350px; margin-top: 20px; height: 44px; width: 96px; border: 5px double white;  position: relative;">
+                <a id="active" style="color: red;" class="not-active"
+                    href="{{link}}">Active</a>
+               
+            </div> -->
+             <form style=" margin-left: 350px; margin-top: 20px;" method="POST" action="{{action}}">
+                    <input name="id" style="display: none;" type="text" value="{{obj}}">
+                    <input style="height: 44px; width: 96px;" type="submit" value="Active">
+                </form>
+        </div>
+    </div>
+</body>
+<script>
+        document.getElementById('action').onclick = function(e){
+                if (this.checked){
+                   Active(true);
+                }
+                else{
+                    Active(false)
+                }
+            };
+    function Active(flag){
+        var element = document.getElementById('active');
+        if(flag){
+            element.classList.remove('not-active');
+            element.classList.add('active');
+        }else{
+            element.classList.remove('active');
+            element.classList.add('not-active');
+        }
+        
+    }
+</script>
+</html>
