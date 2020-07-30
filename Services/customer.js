@@ -26,45 +26,51 @@ class Customer extends Model {
 
 Customer.init(
     {
-        id_customer: {
+        id: {
             type: Sequelize.STRING,
             allowNull: false,
             primaryKey: true,
         },
         name: {
+            allowNull: false,
             type: Sequelize.STRING,
         },
-        DOB: {
+        dob: {
+            allowNull: false,
             type: Sequelize.DATEONLY,
         },
         gender: {
+            allowNull: false,
             type: Sequelize.STRING,
         },
-        phone_number: {
-            type: Sequelize.STRING,
-        },
-        email: {
+        phone: {
+            allowNull: false,
             type: Sequelize.STRING,
         },
         address: {
+            allowNull: false,
             type: Sequelize.STRING,
         },
-        id_card: {
-            type: Sequelize.INTEGER,
+        identify: {
+            allowNull: false,
+            type : Sequelize.STRING
         },
-        issue_date_for_id_card: {
+        identifyID: {
+            allowNull: false,
+            type: Sequelize.STRING,
+        },
+        identifyDate: {
+            allowNull: false,
             type: Sequelize.DATEONLY,
         },
-        id_card_front_side_photo: {
-            type: Sequelize.STRING.BINARY,
+        identifyFontImg: {
+            allowNull: false,
+            type: Sequelize.STRING,
         },
-        id_card_back_side_photo: {
-            type: Sequelize.STRING.BINARY,
+        identifyEndImg: {
+            allowNull: false,
+            type: Sequelize.STRING,
         },
-        // user_id: {
-        //   type: Sequelize.INTEGER,
-        //   references: { model: account, key: 'account_id' },
-        // },
     },
     {
         sequelize: db,
@@ -74,4 +80,4 @@ Customer.init(
 
 User.hasOne(Customer)
 Customer.belongsTo(User)
-module.exports = User;
+module.exports = Customer;

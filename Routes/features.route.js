@@ -1,17 +1,18 @@
 const Express = require('express')
 const Router = Express.Router();
+const Customer = require('../Services/customer')
 const {authentication} = require('../Middleware/auth');
 
 
 
 Router.use(authentication)
 
-Router.get('/', (req, res) => {
+Router.get('/', async(req, res) => {
     res.render('PageFeatures',{title : "Features"})
 })
 
 Router.get('/test', (req, res) => {
-    res.render('PageSendMail.ejs',{title : 'Test'})   
+    res.render('PageWaiting.ejs',{title : 'Test'})   
 })
 
 Router.use('/history',require('./history.route'))

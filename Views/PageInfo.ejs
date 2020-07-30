@@ -25,13 +25,13 @@
         </div>
         <div class="row form gradient-bg">
             <div class="row form-title">
-                
+
                 <h2>Personal Informaton</h2>
                 <p>Update Informaton,Terms required when using the service</p>
-                 <%- include('ShowMessage') %> 
+                <%- include('ShowMessage') %>
             </div>
             <div class="row form-main">
-                <form method="POST" class="form-group">
+                <form enctype="multipart/form-data" method="POST" class="form-group" id="FormInfo" name="FormInfo">
                     <div class="row">
                         <label class="row">Full Name</label>
                         <input class="row myinput" type="text" name="Fullname" id="Fullname"
@@ -41,13 +41,14 @@
                     <div class="row form-row">
                         <div class="col-md-6">
                             <label class="row">Date of Birth</label>
-                            <input class="row myinput" type="date" value="yyyy-MM-dd" />
+                            <input class="row myinput" name="DOB" type="date" value="yyyy-MM-dd" />
                         </div>
+
                         <div class="col-md-6">
                             <label class="row" for="identify">Gender</label>
-                            <select class="row myinput" id="identify" name="identify">
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
+                            <select class="row myinput" id="identify" name="Gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>
@@ -63,22 +64,23 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="row" for="identify"> Identity Papers</label>
-                            <select class="row myinput" id="identify" name="identify">
-                                <option value="1">CMMD</option>
-                                <option value="2">CCCD</option>
-                                <option value="3">Passport</option>
+                            <label class="row" for="Identify"> Identity Papers</label>
+                            <select class="row myinput" id="Identify" name="Identify">
+                                <option value="CMMD">CMMD</option>
+                                <option value="CCCD">CCCD</option>
+                                <option value="Passport">Passport</option>
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <label class="row" for="identify_num">Identify Number</label>
-                            <input type="text" class="row myinput" id="identify_num" placeholder="Write here..."
-                                value="Otto" required />
+                            <label class="row" for="IndentifyNumber">Identify Number</label>
+                            <input type="text" class="row myinput" name="IdentifyNumber" id="IndentifyNumber"
+                                placeholder="Write here..." />
                         </div>
                         <div class="col-md-4">
-                            <label class="row" for="example-date-input">Identify Date</label>
+                            <label class="row" for="IndentifyDate">Identify Date</label>
                             <div>
-                                <input class="row myinput" type="date" value="yyyy-MM-dd" id="example-date-input" />
+                                <input id="IndentifyDate" name="IdentifyDate" class="row myinput" type="date"
+                                    value="yyyy-MM-dd" />
                             </div>
                         </div>
                     </div>
@@ -89,37 +91,35 @@
                             <div class="col-md-6 box-item">
                                 <label class="row" for="identify_num">Image Identify Font</label>
                                 <div class="row box-img">
-                                    <img id="imgFont" name="imgFont" src="../../img/about-img.png"
-                                        alt="">
+                                    <img id="imgFont" name="imgFont" src="../../img/about-img.png" alt="">
                                 </div>
                                 <div class="row box-btn">
                                     <input type="button" id="btnFont" value="Choose Image">
-                                    <input accept="image/*" id="imgFontFile" type="file" name="name" style="display: none;"
-                                        onchange="ShowImage(this)" />
+                                    <input accept="image/*" id="imgFontFile" type="file" name="imgFontFile"
+                                        style="display: none;" onchange="ShowImage(this)" />
                                 </div>
                             </div>
                             <div class="col-md-6 box-item">
                                 <label class="row" for="identify_num">Image Identify End</label>
                                 <div class="row box-img">
-                                    <img id="imgEnd" name="imgEnd" src="../../img/about-img.png" alt="">
+                                    <img id="imgEnd" name=" " src="../../img/about-img.png" alt="">
                                 </div>
                                 <div class="row box-btn">
                                     <input type="button" id="btnEnd" value="Choose Image">
-                                    <input accept="image/*" id="imgEndFile" onchange="ShowImage(this)" type="file" name="name" style="display: none;" />
+                                    <input accept="image/*" id="imgEndFile"  onchange="ShowImage(this)" type="file"
+                                        name="imgEndFile" style="display: none;" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row btnsub">
-                        <input type="submit" value="Submit" class="btn" />
+                        <input id="Submit" type="submit" value="Submit" class="btn" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
-
-
 <%- include("PageFooter") %>
 
 <script>
@@ -131,19 +131,37 @@
             $('#imgFontFile').trigger('click');
 
         });
-      
+
         $('#btnEnd').on('click', function () {
             $('#imgEndFile').trigger('click');
         });
+
+        const validate = require('jquery-validation');
+
+        $('#FormInfo').validate({
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            rules: {
+                "Fullname": {
+                    required: true,
+                    maxlength: 15
+                }
+            },
+            messages: {
+                required: "Full not empty"
+            }
+        })
+
     });
 
     function ShowImage(e) {
-        
+
         const flag = (e.id).toLowerCase().indexOf('font') !== -1 ? true : false
         console.log(flag);
         const reader = new FileReader();
         reader.onload = function (e) {
-            if(flag) $("#imgFont").attr("src", e.target.result);
+            if (flag) $("#imgFont").attr("src", e.target.result);
             else $("#imgEnd").attr("src", e.target.result);
         }
         //Imagepath.files[0] is blob type
@@ -151,95 +169,3 @@
     }
 </script>
 
-
-<!-- 
-<body>
-    <div class="container-fluid">
-        <div class="row main-content-register bg-success text-center">
-            <div class="col-lq-4 col-md-4 text-center company__info">
-                <span class="company__logo">
-                    <h2 class="img">
-                        <span></span>
-                    </h2>
-                </span>
-                <div class="bank-title">
-                    <h4 class="company__title">Internet Banking</h4>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12 login_form">
-                <div class="container-fluid">
-                    <div class="row txt">
-                        <h2>Register</h2>
-                    </div>
-                    <div class="row">
-                        <form method="POST" control="" class="form-group">
-                            <div class="row">
-                                <input type="text" name="Fullname" id="Fullname" class="form__input"
-                                    placeholder="Full name" />
-                            </div>
-
-                            <div class="form-group row datebirth">
-                                <label for="example-date-input" class="form-control col-md-3 databirth__label">Date of Birth</label>
-                                <input class="form-control col-md-9 databirth__date" type="date" value="yyyy-MM-dd"
-                                    id="example-date-input" />
-
-                            </div>
-
-                            <div class="row psw d-flex">
-                                <div class="col-md-6">
-                                    <input type="password" name="password" id="password" class="form__input psw_0"
-                                        placeholder="Password" />
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="password" name="re-password" id="re-password" class="form__input psw_0"
-                                        placeholder="Re-Password" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <input type="email" name="Email" id="Email" class="form__input" placeholder="Email" />
-                            </div>
-
-                            <div class="form-row identify">
-                                <div class="col-md-4 mb-3">
-                                    <label for="identify"> Identity Papers</label>
-                                    <select class="custom-select" id="identify" name="identify">
-                                        <option value="1">CMMD</option>
-                                        <option value="2">CCCD</option>
-                                        <option value="3">Passport</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="identify_num">Identify Number</label>
-                                    <input type="number" class="form-control" id="identify_num" placeholder="Last name"
-                                        value="Otto" required />
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="example-date-input">Identify Date</label>
-                                    <div>
-                                        <input class="form-control" type="date" value="yyyy-MM-dd"
-                                            id="example-date-input" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="form-control custom-file">
-                                    <input type="file" class="form-group custom-file-input" id="identify_img"
-                                        name="identify_img" />
-                                    <label class="form-control custom-file-label" for="identify_img">Choose Image Identify</label>
-                                </div>
-                            </div>
-
-                            <div class="row btnsub">
-                                <input type="submit" value="Submit" class="btn" />
-                            </div>
-                        </form>
-                    </div>
-                    <div class="row resgis">
-						<p>Back Login Page<a href="/login"> Login Here</a></p>
-					</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body> -->

@@ -513,3 +513,42 @@ label {
   );
   
 }
+
+.waiting{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+
+}
+.waiting-title > h2{
+  font-size: 5rem;
+}
+.waiting-box{
+  width: 50%;
+  height: 600px;
+  border: 5px double white;
+  margin-bottom: 30px;
+  padding: 10px;
+
+ 
+}
+.box-main{
+  border: 2px double white;
+  width: 100%;
+  height: 530px;
+  padding: 10px;
+}
+.box-main-row{
+  width: 100%;
+  height: 40px;
+  border-bottom: dotted white;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.box-main-row > p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 22px;
+}

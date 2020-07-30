@@ -1,7 +1,7 @@
 const Express = require('express')
 const User = require('../Services/user')
 const Route = Express.Router();
-
+const { isStatusWaiting } = require('../Middleware/auth')
 Route.get('/', (req, res) => {
     res.render('PageHome', { title : 'Home Page'})
 })
@@ -34,5 +34,9 @@ Route.post('/active', (req, res) => {
             })
        
     })
+
+Route.get('/waiting-page', isStatusWaiting ,(req, res) => {
+    res.render('PageWaiting', { title: 'Waiting' })
+})
 
 module.exports = Route

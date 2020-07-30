@@ -1,10 +1,10 @@
 const Express = require('express');
 const passport = require('../Middleware/passport');
-
+const Customer = require('../Services/customer')
 
 const Route = Express.Router();
 
-Route.get('/', (req, res) => {
+Route.get('/', async (req, res) => {
   res.render('PageLogin',{title : 'Sign In'});
 }).post(
   '/',
@@ -19,9 +19,14 @@ Route.get('/', (req, res) => {
       if (status === 1) {
         res.redirect('/update-information');
       }
-      else {
+      else if (status === 2) {
+        res.redirect('/waiting-page');
+      } else if (status === 3) {
         res.redirect('/features');
+      } else {
+        res.redirect('/404');
       }
+
     } else if (role === 1) {
       res.send('Trang Nhan Vien Ngan Hang');
     } else if (role === 2) {

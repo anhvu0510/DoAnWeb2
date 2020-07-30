@@ -6,8 +6,8 @@
     <div class="loader"></div>
   </div>
 
-  <div class="wrap">
-    <div class="header">
+  <div>
+    <div style="height: 150px;" class="header">
       <div class="header-title">
         <div class="header-title-img">
           <img src="../img/logo.png" alt="" />
@@ -20,7 +20,7 @@
           </a>
         </div>
       </div>
-      <nav class="header-menu">
+      <nav class="container-fluid header-menu">
         <ul class="menu-lv1">
           <li><i class="fas fa-home"></i> <a class="home" href="/features">Home</a> </li>
           <li>
@@ -68,54 +68,59 @@
       </nav>
     </div>
     <div class="content gradient-bg">
-      <section class="features-section ">
-        <div class="container text-white">
-          <div class="section-title text-center content-title">
+         <div class="text-white waiting">
+          <div class="section-title text-center waiting-title">
             <h2>
-              Baking Account
+              Waiting Page
             </h2>
-            <p>Customer Card Management</p>
+            <p>Waiting for the staff to verify the registration</p>
+            <%- include('ShowMessage') %>
           </div>
-          <div class="row content-section">
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-plus-circle content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a href="#">
-                  <h4>Create Account</h4>
-                </a>
-                <p>Registration is fast, convenient and easy</p>
-              </div>
-            </div>
-             <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-id-card"></i>
-              <div class="feature-content">
-                <a href="#">
-                  <h4>Customer Account</h4>
-                </a>
-                <p>All accounts belong to the customer</p>
-              </div>
-            </div>
-             <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-history content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a href="#">
-                  <h4>Transaction</h4>
-                </a>
-                <p>Account Transaction History</p>
-              </div>
-            </div>
+          <div class="waiting-box">
+            <div class="box-header">
+                <p>NET BAKING</p>
+            </div>  
+            <div class="box-main">
+                <div class="box-main-row">
+                    <p>Dear , <%= CustomerName %> </p>
+                </div>
+                 <div class="box-main-row">
+                    <p>Thank you for trusting and using our banking services</p>
+                </div>
+                 <div class="box-main-row">
+                    <p>You have just updated your information to be able to use banking services</p>
+                </div>
+                 <div class="box-main-row">
+                    <p>Please wait within 24 hours </p>
+                </div>
+                 <div class="box-main-row">
+                    <p>Our bank staff will confirm all the information you provide is valid</p>
+                </div>
 
-
-
-
-
+                 <div class="box-main-row">
+                    <p>Any questions please send to:</p>
+                </div>
+                 <div class="box-main-row">
+                    <p> Email : netbanking.ltweb02@gmail.com</p>
+                </div>
+                 <div class="box-main-row">
+                    <p>Phone : 0969696969</p>
+                </div>
+                 <div class="box-main-row">
+                    <p></p>
+                </div>
+                 <div class="box-main-row">
+                    <p style="text-align: end; margin-right: 50px;" >Thank you</p>
+                </div>
+                 <div class="box-main-row">
+                    <p></p>
+                </div>
+                 <div class="box-main-row">
+                    <p></p>
+                </div>
+            </div> 
           </div>
         </div>
-    </div>
-    </section>
   </div>
   </div>
 </body>
