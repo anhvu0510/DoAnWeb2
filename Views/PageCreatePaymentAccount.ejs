@@ -72,57 +72,34 @@
         <div class="container text-white">
           <div class="section-title text-center content-title">
             <h2>
-              Baking Account
+              Create Payment Account
             </h2>
-            <p>Customer Card Management</p>
           </div>
-          <div class="row content-section">
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-plus-circle content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a class="not-active" href="/createpaymentaccount">
-                  <h4>Create Payment Account</h4>
-                </a>
-                <p>Registration is fast, convenient and easy</p>
-              </div>
+          <form method="POST">
+            <div class="form-group">
+                <label for="balance">Select balance & currency</label>
+                <select class="form-control" id="balance" name="balance">
+                  <option>50</option>
+                  <option>1000</option>
+                  <option>50000</option>
+                  <option>100000</option>
+                  <option>500000</option>
+                </select>
             </div>
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-plus-circle content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a class="not-active" href="/createsavingaccount">
-                  <h4>Create Saving Account</h4>
-                </a>
-                <p>Registration is fast, convenient and easy</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="currency" id="currency" value="vnd" checked>
+                <label class="form-check-label" for="vnd">
+                  VND
+                </label>
               </div>
-            </div>
-             <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-id-card"></i>
-              <div class="feature-content">
-                <a class="not-active" href="#">
-                  <h4>Customer Account</h4>
-                </a>
-                <p>All accounts belong to the customer</p>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="currency" id="currency" value="usd">
+                <label class="form-check-label" for="usd">
+                  USD
+                </label>
               </div>
-            </div>
-             <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-history content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a class="not-active" href="#">
-                  <h4>Transaction</h4>
-                </a>
-                <p>Account Transaction History</p>
-              </div>
-            </div>
-
-
-
-
-
-          </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
     </div>
     </section>
