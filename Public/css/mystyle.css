@@ -31,6 +31,12 @@ a.mybtn {
 a.mybtn:hover {
   border-color: rgba(255, 255, 255, 1);
 }
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}
 @media all and (max-width: 30em) {
   a.mybtn {
     display: block;
@@ -429,12 +435,12 @@ label {
 }
 
 .mail-action {
-    width: 100%;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
 }
-.checkbox-text{
+.checkbox-text {
   color: white;
   font-size: 25px;
 }
@@ -449,9 +455,8 @@ label {
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
-
 }
-.checkboxFour > input{
+.checkboxFour > input {
   visibility: hidden;
 }
 .checkboxFour label {
@@ -479,7 +484,7 @@ label {
   background: #26ca28;
 }
 
-.btn-accept{
+.btn-accept {
   width: 200px;
   height: 50px;
   border: 5px double white;
@@ -493,7 +498,7 @@ label {
   );
   border-radius: 5px;
 }
-.btn-accept > a{
+.btn-accept > a {
   width: 100%;
   font-size: 25px;
   font-weight: bold;
@@ -501,9 +506,8 @@ label {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 5px;
-  
 }
-.btn-accept:hover{
+.btn-accept:hover {
   background: linear-gradient(
     to left,
     #3e2bde 0%,
@@ -511,36 +515,31 @@ label {
     #2dd3aa 100%,
     #2dd3aa 100%
   );
-  
 }
 
-.waiting{
+.waiting {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
-
 }
-.waiting-title > h2{
+.waiting-title > h2 {
   font-size: 5rem;
 }
-.waiting-box{
+.waiting-box {
   width: 50%;
   height: 600px;
   border: 5px double white;
   margin-bottom: 30px;
   padding: 10px;
-
- 
 }
-.box-main{
+.box-main {
   border: 2px double white;
   width: 100%;
   height: 530px;
   padding: 10px;
 }
-.box-main-row{
+.box-main-row {
   width: 100%;
   height: 40px;
   border-bottom: dotted white;
