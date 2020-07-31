@@ -1,0 +1,86 @@
+<%- include("PageHeader") %>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container-fluid mycontainer">
+        <div style="height :100px;" class="row header">
+            <div class="header-title">
+                <div class="header-title-img">
+                    <img src="../img/logo.png" alt="" />
+                </div>
+                <div class="header-title-btn">
+                    <div class="header-title-btn__name">Hello,Customer</div>
+                    <a href="/logout" class="mybtn test__link" style="background-color: #f14e4e;">
+                        <i class="fa fa-power-off" aria-hidden="true"></i>
+                        Sign Out
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row form gradient-bg">
+            <div class="row form-title">
+
+                <h2>Personal Informaton</h2>
+                <p>Update informaton</p>
+                <%- include('ShowMessage') %>
+            </div>
+            <div class="row form-main">
+                <form method="POST" class="form-group" id="FormInfo" name="FormInfo">
+                    <div class="row">
+                        <label class="row">Name</label>
+                        <input class="row myinput text-white bg-secondary" type="text" name="name" id="name" required="required" value="<%= name %>" readonly="readonly"/>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <label class="row">Date of Birth</label>
+                            <input class="row myinput" name="DOB" type="date" required="required" value="<%= DOB %>" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="row" for="gender">Gender</label>
+                            <select class="row myinput" id="gender" name="gender">
+                                <option value="Male" <% if(gender == "Male"){ %> selected="selected" <%}%>>Male</option>
+                                <option value="Female"<% if(gender == "Female"){ %> selected="selected" <%}%> >Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="row">Phone Number</label>
+                        <input class="row myinput" type="text" name="phone" id="phone" value="<%= phone %>" />
+                    </div>
+                    <div class="row">
+                        <label class="row">Address</label>
+                        <input class="row myinput" type="text" name="address" id="address" value="<%= address %>" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="row" for="identify"> Identity Papers</label>
+                            <input class="row myinput text-white bg-secondary" type="text" name="identify" id="identify" value="<%= identify %>" readonly="readonly" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="row" for="identifyID">Identify Number</label>
+                            <input type="text" class="row myinput text-white bg-secondary" name="identifyID" id="identifyID" value="<%= identifyID %>" readonly="readonly" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="row" for="identifyDate">Identify Date</label>
+                            <div>
+                                <input class="row myinput text-white bg-secondary" id="identifyDate" name="identifyDate" type="date" value="<%= identifyDate %>" readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row btnsub">
+                        <input id="Submit" type="submit" value="Update" class="btn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("PageFooter") %>
