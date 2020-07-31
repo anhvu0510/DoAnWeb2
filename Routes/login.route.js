@@ -28,9 +28,9 @@ Route.get('/', async (req, res) => {
       }
 
     } else if (role === 1) {
-      res.send('Trang Nhan Vien Ngan Hang');
+      res.redirect('/admin');
     } else if (role === 2) {
-      res.redirect('/about');
+      res.redirect('/admin');
     } else {
       res.redirect('/500');
     }

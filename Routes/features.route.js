@@ -12,7 +12,7 @@ Router.get('/', async(req, res) => {
 })
 
 Router.get('/test', (req, res) => {
-    res.render('PageWaiting.ejs',{title : 'Test'})   
+    res.render('admin/PageIndex.ejs',{title : 'Dashbroad'})   
 })
 
 Router.use('/history',require('./history.route'))

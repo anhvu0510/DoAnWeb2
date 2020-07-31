@@ -73,6 +73,9 @@ app.use("/logout", require("./Routes/logout.route"));
 app.use("/features", require("./Routes/features.route"));
 app.use('/update-information', require('./Routes/update_info.route'))
 
+app.use('/admin',require('./Routes/admin/admin.route'))
+
+
 
 app.use((req, res) => {
     res.status(404).render('404',{title : 'Page Not Found'});

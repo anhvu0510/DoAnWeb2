@@ -1,0 +1,40 @@
+<%- include("../PageHeader") %>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+  <div class="container-fluid dashboard">
+      <div class="row db-header">
+         <div class="header-title-img">
+          <img src="../img/logo.png" alt="" />
+        </div>
+        <div class="header-title-btn">
+          <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
+          <a
+            href="/logout"
+            class="mybtn test__link"
+            style="background-color: #f14e4e;"
+          >
+            <i class="fa fa-power-off" aria-hidden="true"></i>
+            Sign Out
+          </a>
+        </div>  
+      </div>
+      <div class="row db-content">
+        <div class="content-menu">
+           <%- include('Partials/MenuSide') %> 
+        </div>
+        <div class=" gradient-bg content-main">
+            <div class="main-title">
+              <h2>Account Management</h2>
+            </div>
+        </div>
+      </div>
+  </div>
+ 
+</body>
+
+
+<%- include("../PageFooter") %>

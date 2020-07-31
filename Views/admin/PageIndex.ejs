@@ -1,0 +1,84 @@
+<%- include("../PageHeader") %>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+  <div class="container-fluid dashboard">
+      <div class="row db-header">
+         <div class="header-title-img">
+          <img src="../img/logo.png" alt="" />
+        </div>
+        <div class="header-title-btn">
+          <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
+          <a
+            href="/logout"
+            class="mybtn test__link"
+            style="background-color: #f14e4e;"
+          >
+            <i class="fa fa-power-off" aria-hidden="true"></i>
+            Sign Out
+          </a>
+        </div>  
+      </div>
+      <div class="row db-content">
+        <div class="content-menu">
+           <%- include('Partials/MenuSide') %> 
+        </div>
+        <div class=" gradient-bg content-main">
+            <div class="main-title">
+              <h2>Net Baking Dashbroad</h2>
+            </div>
+             <div class="show-error">
+                <%- include('../ShowMessage') %> 
+             </div>
+            <div class="main-info">
+               <h3>Lập Trình Web 02 - 17CK1</h3>
+              <div class="box-info">
+                  <div class="box-info-item">
+                    <div class="info-item-avatar"></div>
+                    <div class="info-item-content">
+                      <p>Họ Và Tên : </p>
+                      <h3>La Anh Vũ</h3>
+                      <p>MSSV :</p>
+                      <h3>1760467</h3>
+                    </div>
+                  </div>
+                    <div class="box-info-item">
+                    <div class="info-item-avatar"></div>
+                    <div class="info-item-content">
+                      <p>Họ Và Tên : </p>
+                      <h3>Trần Văn Thương</h3>
+                      <p>MSSV :</p>
+                      <h3>1760439</h3>
+                    </div>
+                  </div>
+                    <div class="box-info-item">
+                    <div class="info-item-avatar"></div>
+                    <div class="info-item-content">
+                      <p>Họ Và Tên : </p>
+                      <h3>Đặng Khắc Khanh</h3>
+                      <p>MSSV :</p>
+                      <h3>1760331</h3>
+                    </div>
+                  </div>
+                    <div class="box-info-item">
+                    <div class="info-item-avatar"></div>
+                    <div class="info-item-content">
+                      <p>Họ Và Tên : </p>
+                      <h3>Hoàng An</h3>
+                      <p>MSSV :</p>
+                      <h3>1760003</h3>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+ 
+</body>
+
+
+<%- include("../PageFooter") %>

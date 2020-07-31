@@ -39,4 +39,5 @@ Route.get('/waiting-page', isStatusWaiting ,(req, res) => {
     res.render('PageWaiting', { title: 'Waiting' })
 })
 
+
 module.exports = Route

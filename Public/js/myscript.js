@@ -4,20 +4,10 @@ $(document).ready(function () {
         const href = $(this).find('a').attr('href')
         window.location.href += href;
     })
-
-    // const Info = $('#FormInfo');
-    // $('#Submit').click(() => {
-    //     alert('da vao')
-    //     Info.validate({
-    //         rules: {
-    //             Fullname: {
-    //                 require: true
-    //             }
-    //         },
-    //         messages: {
-    //             require: "Full not empty"
-    //         }
-    //     })
-    // })
+    $('.content-menu-item').click(function () {
+        const href = $(this).find('a').attr('href')
+        console.log(`${window.location.host}/admin${href}`);
+        window.location.href = `http://${window.location.host}/admin${href}`
+    })
 
 });
