@@ -25,7 +25,7 @@ Router.post('/',async (req, res) => {
         transger_limit: 50,
         userId: req.user.id,
     });
-    res.render('PageCreateAccountSuccess',{title : 'Create Acoount Success'});
+    res.render('PageCreateAccountSuccess',{title : 'Create Acoount Success' ,accountnumber: accountnumber});
 });
 
 module.exports = Router;
