@@ -41,7 +41,7 @@ Router.get("/", (req, res) => {
     //validate
     const err = validationResult(req)
     console.log(err);
-
+    console.log(req);
     const { email, username, password, re_password } = req.body;
     if (!err.isEmpty()) {
       const errors = err.errors;

@@ -1,5 +1,12 @@
 const Express = require('express')
 const Router = Express.Router()
+const BodyParser = require('body-parser')
+
+Router.use(BodyParser());
+Router.use(BodyParser.json());
+
+
+
 const {isStaff} = require('../../Middleware/auth')
 
 Router.use(isStaff)

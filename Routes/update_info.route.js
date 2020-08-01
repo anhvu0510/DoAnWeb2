@@ -13,12 +13,14 @@ Router
     .get('/', (req, res) => {
         res.render('PageInfo', { title: 'Update Information' })  
     })
-    .post('/',(req, res) => {
+    .post('/', (req, res) => {
         Upload(req, res, async(err) => {
             if (err) {
+                console.log(err);
                 req.flash('error_msg', 'Upload Image Fail, Please try again')
                 res.redirect('/update-information');
-            }else {
+            } else {
+              
                 const { imgFontFile, imgEndFile } = req.files;
                 const { Fullname, DOB, Gender, Phone, Address, Identify, IdentifyNumber, IdentifyDate } = req.body;
                 const newCustomer = await Customer.create({

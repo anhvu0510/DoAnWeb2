@@ -6,35 +6,139 @@
     <div class="loader"></div>
   </div>
   <div class="container-fluid dashboard">
-      <div class="row db-header">
-         <div class="header-title-img">
-          <img src="../img/logo.png" alt="" />
-        </div>
-        <div class="header-title-btn">
-          <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
-          <a
-            href="/logout"
-            class="mybtn test__link"
-            style="background-color: #f14e4e;"
-          >
-            <i class="fa fa-power-off" aria-hidden="true"></i>
-            Sign Out
-          </a>
-        </div>  
+    <div class="row db-header">
+      <div class="header-title-img">
+        <img src="../img/logo.png" alt="" />
       </div>
-      <div class="row db-content">
-        <div class="content-menu">
-           <%- include('Partials/MenuSide') %> 
-        </div>
-        <div class=" gradient-bg content-main">
-            <div class="main-title">
-              <h2>Customer Management</h2>
-            </div>
-        </div>
+      <div class="header-title-btn">
+        <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
+        <a href="/logout" class="mybtn test__link" style="background-color: #f14e4e;">
+          <i class="fa fa-power-off" aria-hidden="true"></i>
+          Sign Out
+        </a>
       </div>
-  </div>
- 
-</body>
+    </div>
+    <div class="row db-content">
+      <div class="content-menu">
+        <%- include('Partials/MenuSide') %>
+      </div>
+      <div class="gradient-bg content-main">
+        <!-- <div class="main-title">
+          <h2>Customer Management</h2>
+        </div> -->
+        <div class="main-content">
+          <div class="show-error">
+             <%- include('../ShowMessage')  %>
+          </div>
+          <table class="table" id="data">
+            <thead class="thead-light">
+              <tr class="tr-head">
+                <th scope="col">STT</th>
+                <th scope="col">Name</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Identify</th>
+                <th scope="col">I-ID</th>
+                <th scope="col">I-Date</th>
+                <th scope="col">I-Img Font</th>
+                <th scope="col">I-Img End</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% data.forEach((item,index) => { %>
+              <tr class="tr-data">
+                <th class="id" style="display: none;"><%= item.id %></th>
+                <th scope="row"><%= index + 1 %></th>
+                <td class="name"><%= item.name %></td>
+                <td class="dob">
+                  <%= item.dob %>
+                </td>
+                <td class="gender">
+                  <%= item.gender %>
+                </td>
+                <td class="address" style="width: 100px;">
+                  <%= item.address %>
+                </td>
+                <td class="phone">
+                  <%= item.phone %>
+                </td>
+                <td class="identify">
+                  <%= item.identify %>
+                </td>
+                <td class="i-id">
+                  <%= item.identifyID %>
+                </td>
+                <td class="i-date">
+                  <%= item.identifyDate %>
+                </td>
+                <td>
+                  <img class="i-FontImg" width="180px" height="140px"
+                    src="../Upload/Identify/<%= item.identifyFontImg %> " alt="" />
+                </td>
+                <td style="display: none;" class="font-img">
+                   <%=  item.identifyFontImg %> 
+                </td>
+                <td class="">
+                  <img class="i-EndImg" width="180px" height="140px" src="../Upload/Identify/<%= item.identifyEndImg %>"
+                    alt="" />
+                </td>
+                 <td style="display: none;" class="end-img">
+                    <%=  item.identifyEndImg %> 
+                </td>
+                <td class="td-status">
+                  <div class="status">
+                    <% if (item.user.StatusID === 2) { %>
+                    <i style="color: #f14e4e;" class="fa fa-times-circle"></i>
+                    <% }else if(item.user.StatusID === 3){ %>
+                    <i style="color: #7fff00;" class="fa fa-check"></i>
+                    <% } else { %>
+                    <i style="color: red;" class="fa fa-lock"></i>
+                    <% } %>
+                  </div>
+                </td>
+                <td class="td-status">
+                  <div class="status">
+                    <% if(item.user.StatusID === 2){ %>
+                    <div class="action-btn">
+                      <button>
+                          <a href="/admin/customer/save/<%= item.userId %>/<%= item.identifyID %>  ">
+                            <i style="
+                            margin: 3px 0px;
+                            color: #ff3333;
+                            font-size: 2vw;
+                          " class="fa fa-floppy-o"></i>
+                          </a>
+                      </button>
+                    </div>
+                    <% }if(item.user.StatusID !== 4){ %>
+                    <div class="action-btn">
+                      <button class="btnEdit">
+                        <i style="
+                            margin: 3px 0px;
+                            color: #0051ffd3;
+                            font-size: 2vw;
+                          " class="fa fa-pencil"></i>
+                      </button>
+                    </div>
+                    <% } %>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
 
+        <div class="edit">
+            <%- include('Partials/CustomerEditForm') %> 
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 
 <%- include("../PageFooter") %>

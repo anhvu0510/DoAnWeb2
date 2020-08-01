@@ -11,15 +11,15 @@ const app = Express();
 //Port
 const port = process.env.PORT || 3000;
 //View Engine
-// app.set("views", "./Views");
-// app.set("view engine", "ejs");
-
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'Views'));
+app.set("views", "./Views");
+app.set("view engine", "ejs");
 
 
-//app.use(Express.static('Public'));
-//app.use(Express.static(__dirname + '/public'));
+
+app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({ extended: false }));
+
+
 app.use(Express.static(path.join(__dirname, 'Public')))
 app.use(
   Session({
@@ -36,8 +36,6 @@ app.use(
 app.use(Passport.initialize());
 app.use(Passport.session());
 
-app.use(BodyParser.urlencoded({ extended: false }));
-app.use(BodyParser.json());
 
 /*************END******************/
 app.use(flash());

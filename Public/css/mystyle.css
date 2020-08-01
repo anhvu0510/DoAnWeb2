@@ -626,7 +626,7 @@ label {
 }
 
 .content-main {
-  height: auto;
+  min-height: 715px;
   width: 90%;
   margin: 10px 0px;
   margin-right: 10px;
@@ -701,4 +701,48 @@ label {
 .info-item-content > h3,
 p {
   color: white;
+}
+
+.main-content {
+  padding: 10px 20px;
+}
+
+tr.tr-data {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+tr.tr-head {
+  text-align: center;
+  color: black;
+  font-weight: bolder;
+}
+.status {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.td-status {
+  padding: 0rem !important;
+  vertical-align: inherit !important;
+  border-top: 0px solid #dee2e6;
+}
+.status > i {
+  font-size: 3vw;
+}
+.action-btn > button {
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  margin: 6px 10px;
+}
+.edit {
+  width: 80%;
+  position: absolute;
+  top: 20px;
+  left: 30%;
+  display: none;
 }

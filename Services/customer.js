@@ -4,6 +4,20 @@ const User = require('./user');
 
 const Model = Sequelize.Model;
 class Customer extends Model {
+    static async findAllCustomer() {
+        return Customer.findAll({
+            include: [
+                {
+                    model: User,
+                    where: {
+                        RoleID: 0
+                    },
+                    attributes: ['StatusID']
+                }]
+        })
+    }
+
+
     static async findById(user_id) {
         return Customer.findByPk(user_id);
     }
@@ -22,6 +36,7 @@ class Customer extends Model {
             where: { id_card },
         });
     }
+    
 }
 
 Customer.init(
