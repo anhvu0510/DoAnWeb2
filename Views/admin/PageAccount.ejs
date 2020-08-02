@@ -74,7 +74,7 @@
                     <%= account.transger_limit %>
                   </td>
                   <td class="text-center">
-                    <% if(account.user.StatusID==3){ %> Locked <% }
+                    <% if(account.user.StatusID == 4){ %> Locked <% }
                        else { %>
                           Open <%
                        }
@@ -148,7 +148,7 @@
                     <%= account.closing_date %>
                   </td>
                   <td class="text-center">
-                    <% if(account.user.StatusID==3){ %> Locked <% }
+                    <% if(account.user.StatusID == 4){ %> Locked <% }
                        else { %>
                           Open <%
                        }
