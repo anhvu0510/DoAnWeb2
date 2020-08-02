@@ -3,6 +3,9 @@ const Sequelize = require("sequelize");
 const db = require("./db");
 const Role = require("./user_role");
 const Status = require("./user_status");
+const Customer = require("./customer"); 
+
+
 
 const Model = Sequelize.Model;
 class User extends Model {
@@ -19,6 +22,17 @@ class User extends Model {
       where: { email }
     });
   }
+  
+  // static async findAllUser() {
+  //   // return User.findAll({
+  //   //   include: [{
+  //   //     model: Customer,
+  //   //     attributes:['name']
+  //   //   }],
+     
+  //   // })
+  // }
+
   static hashPassword(password) {
     return bcrypt.hashSync(password, 10);
   }
@@ -65,4 +79,14 @@ User.belongsTo(Role, { constraints: false, foreignKey: "RoleID" });
 //Status.hasMany(User, { constraints: false, defaultValue: 0 })
 User.belongsTo(Status, { constraints: false, foreignKey: "StatusID" });
 
+
+User.hasOne(Customer, {
+  foreignKey: 'userId',
+  targetKey: 'id',
+})
+
+Customer.belongsTo(User, {
+  foreignKey: 'userId',
+  targetKey: 'id',
+});
 module.exports = User;

@@ -6,35 +6,104 @@
     <div class="loader"></div>
   </div>
   <div class="container-fluid dashboard">
-      <div class="row db-header">
-         <div class="header-title-img">
-          <img src="../img/logo.png" alt="" />
-        </div>
-        <div class="header-title-btn">
-          <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
-          <a
-            href="/logout"
-            class="mybtn test__link"
-            style="background-color: #f14e4e;"
-          >
-            <i class="fa fa-power-off" aria-hidden="true"></i>
-            Sign Out
-          </a>
-        </div>  
+    <div class="row db-header">
+      <div class="header-title-img">
+        <img src="../img/logo.png" alt="" />
       </div>
-      <div class="row db-content">
-        <div class="content-menu">
-           <%- include('Partials/MenuSide') %> 
-        </div>
-        <div class=" gradient-bg content-main">
-            <div class="main-title">
-              <h2>Account Management</h2>
-            </div>
+      <div class="header-title-btn">
+        <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
+        <a href="/logout" class="mybtn test__link" style="background-color: #f14e4e;">
+          <i class="fa fa-power-off" aria-hidden="true"></i>
+          Sign Out
+        </a>
+      </div>
+    </div>
+    <div class="row db-content">
+      <div class="content-menu">
+        <%- include('Partials/MenuSide') %>
+      </div>
+      <div class="gradient-bg content-main">
+        <!-- <div class="main-title">
+          <h2>Customer Management</h2>
+        </div> -->
+        <div class="main-content">
+          <div class="show-error">
+             <%- include('../ShowMessage')  %>
+          </div>
+          <table class="table" id="data">
+            <thead class="thead-light">
+              <tr class="tr-head">
+                <th scope="col">STT</th>
+                 <th scope="col">ID</th>
+                 <th scope="col">Email</th>
+                  <th scope="col">Display Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+              <tr class="tr-data">
+                <th scope="row"></th>
+                <td class="id"></td>
+                <td class="email">
+                </td>
+                <td class="display">
+                </td>
+                <td class="username" style="width: 100px;">
+                
+                </td>
+                <td class="password">
+                 
+                </td>
+                <td class="td-status">
+                  <div class="status">
+                  
+                    <i style="color: #f14e4e;" class="fa fa-times-circle"></i>
+                  
+                    <i style="color: #7fff00;" class="fa fa-check"></i>
+                   
+                    <i style="color: red;" class="fa fa-lock"></i>
+                  
+                  </div>
+                </td>
+                <td class="td-status">
+                  <div class="status">
+                   
+                    <div class="action-btn">
+                      <button>
+                          <a href="/admin/customer/save/">
+                            <i style="
+                            margin: 3px 0px;
+                            color: #ff3333;
+                            font-size: 2vw;
+                          " class="fa fa-floppy-o"></i>
+                          </a>
+                      </button>
+                    </div>
+                 
+                    <div class="action-btn">
+                      <button class="btnEdit">
+                        <i style="
+                            margin: 3px 0px;
+                            color: #0051ffd3;
+                            font-size: 2vw;
+                          " class="fa fa-pencil"></i>
+                      </button>
+                    </div>
+                  
+                  </div>
+                </td>
+              </tr>
+            
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
   </div>
- 
 </body>
-
 
 <%- include("../PageFooter") %>

@@ -40,12 +40,12 @@ Router.get("/", (req, res) => {
 ], asyncHanler(async (req, res) => {
     //validate
     const err = validationResult(req)
-    console.log(err);
-    console.log(req);
+    //console.log(err);
+    //console.log(req);
     const { email, username, password, re_password } = req.body;
     if (!err.isEmpty()) {
       const errors = err.errors;
-      console.log(err);
+      //console.log(err);
 
       res.render('PageRegister', {
         title :'Sign Up',

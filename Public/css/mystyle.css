@@ -19,6 +19,9 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+td {
+    text-align: center;
+}
 a.mybtn {
   display: inline-block;
   padding: 0.3em 1.2em;

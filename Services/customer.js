@@ -3,40 +3,39 @@ const db = require("./db");
 const User = require("./user");
 
 const Model = Sequelize.Model;
+
+
 class Customer extends Model {
-    static async findAllCustomer() {
-        return Customer.findAll({
-            include: [
-                {
-                    model: User,
-                    where: {
-                        RoleID: 0
-                    },
-                    attributes: ['StatusID']
-                }]
-        })
-    }
+  // static async findAllCustomer() {
+  //   return Customer.findAll({
+  //     where: {},
+  //     include: [{
+  //       model: User,
+  //       attributes : ['StatusID']
+  //     }]
+  //   });
+  // }
 
 
-    static async findById(user_id) {
-        return Customer.findByPk(user_id);
-    }
-    static async findByPhoneNumber(phone_number) {
-        return Customer.findOne({
-            where: { phone_number },
-        });
-    }
-    static async findByEmail(email) {
-        return Customer.findOne({
-            where: { email },
-        });
-    }
-    static async findByIdCard(id_card) {
-        return Customer.findOne({
-            where: { id_card },
-        });
-    }
-    
+  static async findById(user_id) {
+    return Customer.findByPk(user_id);
+  }
+  static async findByPhoneNumber(phone_number) {
+    return Customer.findOne({
+      where: { phone_number },
+    });
+  }
+  static async findByEmail(email) {
+    return Customer.findOne({
+      where: { email },
+    });
+  }
+  static async findByIdCard(id_card) {
+    return Customer.findOne({
+      where: { id_card },
+    });
+  }
+
   static async findById(user_id) {
     return Customer.findByPk(user_id);
   }
@@ -78,6 +77,7 @@ class Customer extends Model {
     );
   }
 }
+
 
 Customer.init(
   {
@@ -125,7 +125,9 @@ Customer.init(
     identifyEndImg: {
       allowNull: false,
       type: Sequelize.STRING
-    }
+    },
+
+
   },
   {
     sequelize: db,
@@ -133,6 +135,8 @@ Customer.init(
   }
 );
 
-User.hasOne(Customer);
-Customer.belongsTo(User);
+
+
+
+
 module.exports = Customer;
