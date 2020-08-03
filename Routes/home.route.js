@@ -16,7 +16,7 @@ Route.post('/active', (req, res) => {
                     res.redirect('/login');
                 }
                 else {
-                    User.update({ StatusID: 1 }, { where: { id } })
+                    User.update({ StatusID: 1,old_status : 1 }, { where: { id } })
                     .then((result) => {
                         console.log('Update Success');
                         req.flash('success_msg', 'Acctive Email Success, Now You Can Log In')

@@ -1,0 +1,100 @@
+<%- include("../PageHeader") %>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+  <div class="container-fluid dashboard">
+    <div class="row db-header">
+      <div class="header-title-img">
+        <img src="../img/logo.png" alt="" />
+      </div>
+      <div class="header-title-btn">
+        <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
+        <a href="/logout" class="mybtn test__link" style="background-color: #f14e4e;">
+          <i class="fa fa-power-off" aria-hidden="true"></i>
+          Sign Out
+        </a>
+      </div>
+    </div>
+    <div class="row db-content">
+      <div class="content-menu">
+        <%- include('Partials/MenuSide') %>
+      </div>
+      <div class=" gradient-bg content-main">
+        <!-- <div class="main-title">
+          <h2>Account Management</h2>
+        </div> -->
+        <div class="main-content">
+          <div class="show-error">
+            <%- include('../ShowMessage')  %>
+          </div>
+          <!-- <form method="GET" action="">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" id="search" placeholder="User ID/Account Number">
+                <div class="input-group-append">
+                  <button class="input-group-text" type="submit" id="basic-addon2"><i class="fas fa-search"></i></button>
+                </div>
+              </div>
+            </form> -->
+          <h3 class="text-center text-light"><strong><%= account.user.customer.name %> 's Account Details</strong></h3></br>
+
+          <% if(typeof account != 'null' && typeof account != 'undefined'){ %>
+          <form method="POST">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="row">Owner ID</label>
+                <input class="row myinput text-white bg-secondary" required="required" type="text" name="userId"
+                  id="userId" required="required" value="<%= account.user.customer.name %>" readonly="readonly" />
+              </div>
+              <div class="col-md-6">
+                <label class="row">Account Number</label>
+                <input class="row myinput text-white bg-secondary" required="required" type="text" name="accountNumber"
+                  id="accountNumber" value="<%= account.account_number %>" readonly="readonly" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label class="row">Date Opened</label>
+                <input class="row myinput" required="required" type="date" name="dateOpened" id="dateOpened"
+                  value="<%= account.issue_date %>" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="row">Transfer Limit</label>
+                <input class="row myinput" required="required" type="text" name="transferLimit" id="transferLimit"
+                  value="<%= account.transger_limit %>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label class="row">Balance</label>
+                <input class="row myinput" required="required" type="nunmber" name="balance" id="balance"
+                  value="<%= account.balance %>" />
+              </div>
+              <div class="col-md-6">
+                <label class="row" for="currency">Currency</label>
+                <select class="row myinput" id="currency" name="currency">
+                  <option value="VND" <% if(account.currency=='VND'){ %> selected="selected" <% }%>>VND</option>
+                  <option value="USD" <% if(account.currency=='USD'){ %> selected="selected" <% }%>>USD</option>
+                </select>
+              </div>
+            </div>
+            <div class="row btnsub">
+              <input id="Submit" type="submit" value="Update" class="btn" />
+            </div>
+          </form>
+          <% } %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<%- include("../PageFooter") %>

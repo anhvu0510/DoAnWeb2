@@ -67,6 +67,10 @@ User.init(
     password: {
       type: Sequelize.STRING,
       allownull: false
+    },
+    old_status: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
     }
   },
   {

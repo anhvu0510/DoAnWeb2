@@ -1,31 +1,31 @@
-<div class="content-menu-item item-active">
+<div class="content-menu-item <%= isActive == 0 ? 'item-active': ' ' %>">
     <i class="fas fa-home"></i>
     <div class="content-menu-item-text">
         <p><a href="/">Home</a></p>
     </div>
 </div>
-<div class="content-menu-item">
+<div class="content-menu-item  <%= isActive == 1 ? 'item-active': ' ' %>">
     <i class="fas fa-user-circle"></i>
     <div class="content-menu-item-text">
         <p><a href="/user">User</a></p>
     </div>
 </div>
 
-<div class="content-menu-item">
+<div class="content-menu-item  <%= isActive == 2 ? 'item-active': ' ' %>">
     <i class="fas fa-credit-card"></i>
     <div class="content-menu-item-text">
         <p><a href="/account">Account</a></p>
     </div>
 </div>
 
-<div class="content-menu-item">
+<div class="content-menu-item  <%= isActive == 3 ? 'item-active': ' ' %>">
     <i class="fas fa-info-circle"></i>
     <div class="content-menu-item-text">
         <p><a href="/customer">Customer</a></p>
     </div>
 </div>
 
-<div class="content-menu-item">
+<div class="content-menu-item  <%= isActive == 4 ? 'item-active': ' ' %>">
     <i class="fa fa-money"></i>
     <div class="content-menu-item-text">
         <p><a href="/saving">Saving</a></p>

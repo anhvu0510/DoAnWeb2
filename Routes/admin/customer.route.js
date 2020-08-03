@@ -18,12 +18,13 @@ Router.get("/", async (req, res) => {
                 attributes: ["StatusID"],
             },
         ],
+       
     }).then((data) => {
-        console.log(data);
-
+        //console.log(data);
         res.render("admin/PageCustomer", {
             title: "Customer Managament",
             CustomerName: "Staff",
+            isActive: 3,
             data,
         });
     })
@@ -97,7 +98,7 @@ Router.post("/", (req, res) => {
 
 Router.get("/save/:id/:identify", (req, res) => {
     const { id, identify } = req.params;
-    User.update({ StatusID: 3 }, { where: { id } })
+    User.update({ StatusID: 3,old_status : 3 }, { where: { id } })
         .then(async (rs) => {
             const accountnumber = identify + Math.floor(Math.random() * 999999);
             await Payment.create({

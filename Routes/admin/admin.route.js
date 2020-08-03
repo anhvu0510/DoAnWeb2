@@ -9,7 +9,12 @@ const {isStaff} = require('../../Middleware/auth')
 Router.use(isStaff)
 
 Router.get('/', (req, res) => {
-    res.render('admin/PageIndex', { title: 'Home - Dashbroad',CustomerName : 'Staff'})
+    res.render('admin/PageIndex',
+        {
+            title: 'Home - Dashbroad',
+            CustomerName: 'Staff',
+            isActive : 0
+        })
 })
 Router.use('/user',require('./user.route'))
 Router.use('/customer', require('./customer.route'))

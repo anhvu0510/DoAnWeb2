@@ -24,7 +24,8 @@ Route.get('/', async (req, res) => {
       } else if (status === 3) {
         res.redirect('/features');
       } else {
-        res.redirect('/404');
+        req.flash('error_msg','Your Account Is Lock')
+        res.redirect('/login');
       }
 
     } else if (role === 1) {

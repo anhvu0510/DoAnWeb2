@@ -10,6 +10,8 @@ function ShowImage(e) {
     reader.readAsDataURL(e.files[0]);
 }
 $(document).ready(function () {
+
+
     $('input[type="file"]').change(function (e) {
         var fileName = e.target.files[0].name;
         $(".custom-file-label").html(fileName);
@@ -22,7 +24,6 @@ $(document).ready(function () {
     })
     $('.content-menu-item').click(function () {
         const href = $(this).find('a').attr('href')
-        console.log(`${window.location.host}/admin${href}`);
         window.location.href = `http://${window.location.host}/admin${href}`
     })
     $('#FormInfoCus').on('click', (e) => {
@@ -73,5 +74,6 @@ $(document).ready(function () {
         $('#FormInfoCus').unbind('click')
         $("#imgEndFile").trigger("click");
     });
+
 
 });

@@ -40,7 +40,14 @@ Router
                 newCustomer
                     .save()
                     .then( async (cus) => {
-                        const isSuccess = await User.update({StatusID : 2}, {where : {id : req.user.id}})
+                        const isSuccess = await User.update({
+                                StatusID: 2,
+                                old_status: 2
+                            },{
+                                where:{
+                                    id: req.user.id
+                                }
+                            })
                         if (isSuccess[0] === 1) {
                             req.flash('success_msg', 'Update Infomaton Success')
                             res.redirect('/waiting-page');
