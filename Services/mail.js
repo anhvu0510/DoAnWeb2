@@ -48,5 +48,24 @@ module.exports = {
                 }
        })
             
-    }
+    },
+    SendMailTransferMoney: (to, subject, obj) => {
+        transporter.sendMail({
+            from: `NET BANKING ${EMAIL_FROM}`,
+            to,
+            subject,
+            template: 'PageSendMailTransferMoney',
+            context:{
+                obj
+            } 
+        }, (err, res) => {
+                if (err) {
+                    console.log('ERROR : Send Fail');
+                    console.log(err);
+                } else {
+                    console.log('MESSAGE : Send Success');
+                }
+       })
+            
+    },
 }

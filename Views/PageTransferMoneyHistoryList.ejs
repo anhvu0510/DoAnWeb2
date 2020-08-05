@@ -72,46 +72,36 @@
         <div class="container text-white">
           <div class="section-title text-center content-title">
             <h2>
-              Baking Transfer
+                Transfer Money History
             </h2>
-            <p>Secured and Safe money transfer service</p>
-          </div>
-          <div class="row content-section">
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-university"></i>
-              <div class="feature-content">
-                <a class="not-active" href="/internaltransfer">
-                  <h4>Internal Transfer</h4>
-                </a>
-                <p>Transfer and Receive money immediately.</p>
-              </div>
-            </div>
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-university content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a class="not-active" href="/">
-                  <h4>InterBank Transfer</h4>
-                </a>
-                <p>Receive money in 24 hours</p>
-              </div>
-            </div>
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-history content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a class="not-active" href="/transfermoneyhistory">
-                  <h4>Transaction</h4>
-                </a>
-                <p>Transfer Money History</p>
-              </div>
-            </div>
-
-
-
-
-
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Transaction ID</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Source Account</th>
+                    <th scope="col">Destination Account</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<transactions.length; i++){ %>
+                        <tr>
+                            <th scope="row"><%= (i + 1)%> </th>
+                            <td><%= transactions[i].transcation_id %> </td>
+                            <td><%= transactions[i].amount %> </td>
+                            <td><%= transactions[i].currency %> </td>
+                            <td><%= transactions[i].description %> </td>
+                            <td><%= transactions[i].date %> </td>
+                            <td><%= transactions[i].SourceID %> </td>
+                            <td><%= transactions[i].DestinationID %> </td>
+                          </tr>
+                    <% } %>
+                </tbody>
+            </table>            
           </div>
         </div>
     </div>

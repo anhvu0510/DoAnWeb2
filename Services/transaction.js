@@ -31,20 +31,15 @@ Transaction.init(
     },
     date: {
       type: Sequelize.DATE,
-    },
-    // source_account: {
-    //   type: Sequelize.STRING,
-    //   references: { model: checkingaccount, key: 'account_number' },
-    // },
-    // destination_account: {
-    //   type: Sequelize.STRING,
-    //   references: { model: checkingaccount, key: 'account_number' },
-    // },
+    }
   },
   {
     sequelize: db,
     modelName: 'transaction',
   }
 );
+
+Transaction.belongsTo(Payment, { constraints: false, foreignKey: "SourceID" });
+Transaction.belongsTo(Payment, { constraints: false, foreignKey: "DestinationID" });
 
 module.exports = Transaction;

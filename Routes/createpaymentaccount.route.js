@@ -17,12 +17,19 @@ Router.post('/',async (req, res) => {
     });
     const accountnumber = customer.identifyID + Math.floor(Math.random() * 999999);
     const { balance, currency } = req.body;
+    var limit = 0;
+    if(currency=="usd"){
+        limit = 50000;
+    }
+    else if(currency=="vnd"){
+        limit = 1000000;
+    }
     const newPaymentacoount = await PaymentAccount.create({
         account_number: accountnumber,
         issue_date: new Date(),
         balance: balance,
         currency: currency,
-        transger_limit: 50,
+        transger_limit: limit,
         userId: req.user.id,
     });
     res.render('PageCreateAccountSuccess',{title : 'Create Acoount Success' ,accountnumber: accountnumber});

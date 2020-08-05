@@ -72,47 +72,50 @@
         <div class="container text-white">
           <div class="section-title text-center content-title">
             <h2>
-              Baking Transfer
+              Internal Transfer
             </h2>
-            <p>Secured and Safe money transfer service</p>
           </div>
-          <div class="row content-section">
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-university"></i>
-              <div class="feature-content">
-                <a class="not-active" href="/internaltransfer">
-                  <h4>Internal Transfer</h4>
-                </a>
-                <p>Transfer and Receive money immediately.</p>
-              </div>
+          <form method="POST">
+            <div class="form-group">
+                <label for="sourceID">Select your account</label>
+                <select class="form-control" id="sourceID" name="sourceID">
+                    <% for(var i=0; i<paymentaccounts.length; i++){ %>
+                        <option><%= paymentaccounts[i].account_number %></option>
+                    <% } %>
+                </select>
             </div>
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-university content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a class="not-active" href="/">
-                  <h4>InterBank Transfer</h4>
-                </a>
-                <p>Receive money in 24 hours</p>
-              </div>
+            <div class="form-group">
+                <label for="destinationID">Input destination account</label>
+                <input class="form-control" type="text" placeholder="0" id="destinationID", name="destinationID">
             </div>
-            <!-- feature -->
-            <div class="col-md-6 col-lg-3 feature content-section-item">
-              <i class="fa fa-history content-section-item__icon"></i>
-              <div class="feature-content content-section-item-title">
-                <a class="not-active" href="/transfermoneyhistory">
-                  <h4>Transaction</h4>
-                </a>
-                <p>Transfer Money History</p>
-              </div>
+            <div class="form-group">
+                <label for="amount">Select amount</label>
+                <select class="form-control" id="amount" name="amount">
+                  <option>50</option>
+                  <option>100</option>
+                  <option>50000</option>
+                  <option>1000000</option>
+                  <option>5000000</option>
+                </select>
             </div>
-
-
-
-
-
-          </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="currency" id="currency" value="vnd" checked>
+                <label class="form-check-label" for="vnd">
+                  VND
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="currency" id="currency" value="usd">
+                <label class="form-check-label" for="usd">
+                  USD
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
     </div>
     </section>

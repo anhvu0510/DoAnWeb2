@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .gradient-bg {
+            background: -webkit-gradient(linear,
+                    left top,
+                    right top,
+                    from(#3e2bce),
+                    color-stop(100%, #2dd3aa),
+                    color-stop(100%, #2dd3aa),
+                    to(#2dd3aa));
+            background: -o-linear-gradient(left,
+                    #3e2bce 0%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%);
+            background: linear-gradient(to right,
+                    #3e2bce 0%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3e2bce', endColorstr='#2dd3aa', GradientType=1);
+        }
+
+        .mail {
+            width: 800px;
+            height: auto;
+            border: 10px double white;
+            padding: 15px;
+        }
+
+        .mail-header {
+            display: flex;
+            width: 500px;
+            justify-content: center;
+            align-items: center;
+            border: 5px double black;
+            text-align: center;
+            background-color: white;
+        }
+
+        .mail-header>h1 {
+            font-size: 4rem;
+            margin: 10px;
+        }
+
+        .btnActive:hover {
+            background: linear-gradient(to left,
+                    #3e2bde 0%,
+                    #2de3aa 100%,
+                    #2dd3aa 100%,
+                    #2dd3aa 100%);
+        }
+
+        .not-active {
+            pointer-events: none;
+            cursor: default;
+            text-decoration: none;
+            color: gray;
+            font-size: 30px; 
+            font-weight: bold; 
+            text-align: center; 
+        }
+        .active{
+            text-decoration: none;
+            color: red;
+            font-size: 30px; 
+            font-weight: bold; 
+            text-align: center; 
+        }
+    </style>
+</head>
+
+<body style="margin-left: 250px;">
+    <div class="mail gradient-bg">
+        <div class="row mail-title">
+            <div class="row mail-header">
+                <h1 style="color:#3e2bce">NET</h1>
+                <h1 style="color:#2dd3aa">BAKING</h1>
+            </div>
+            <div class="row text">
+                <p style="font-size: 20px; color: white;">Thank you for your trust and awkward use of our services</p>
+            </div>
+        </div>
+        <div class="row box-mail">
+            <div style="margin-bottom: 15px;" class="box-mail-header">
+                <h2 style="font-size: 30px; color: white;">Dear, Customer</h2>
+                <div style="font-size: 4rem; color: white; text-align: center;">Your transaction was successful</div>
+            </div>
+            <div class="box-mail-text">
+                <span style="font-size: 20px; color: white;">                    
+                    <p style="font-size: 25px; color: white;">
+                        The remaining amount in your account is {{obj}}
+                    </p>
+                    <p style="padding-left: 25em; font-size: 25px; color: white;">
+                        Thank You
+                    </p>
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

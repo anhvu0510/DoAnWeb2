@@ -5,4 +5,6 @@ Router.get('/', (req, res) => {
     res.render('PageBankTransfer',{title : 'Bank Transfer'})
 })
 
+Router.use('/internaltransfer', require('./internaltransfer.route'));
+Router.use('/transfermoneyhistory', require('./transfermoneyhistory.route'));
 module.exports = Router;
