@@ -74,27 +74,28 @@
                     <%= account.transger_limit %>
                   </td>
                   <td class="text-center">
-                    <% if(account.user.StatusID == 4){ %>  
-                    <i  style="font-size: 40px;" class="fa fa-lock text-danger"></i> 
-                    <% }else { %>
-                     <i  style="font-size: 40px;" class="fa fa-unlock text-success"></i>
-                    <%}%>
+                    <form method="GET">
+                      <% if(account.user.StatusID == 4){ %>
+                      <i  style="font-size: 40px;" class="fa fa-lock text-danger"></i>
+                      <% }else { %>
+                       <i  style="font-size: 40px;" class="fa fa-unlock text-success"></i>
+                      <%}%>
+                    </form>
                   </td>
                   <td class="td-status">
                     <div class="status">
-                      <div class="action-btn">
-                        <button class="btnEdit"
-                        >
-                        <a href="/admin/account/payment-account-details/<%= account.account_number %>">
-                          <i style="
-                            margin: 3px 0px;
-                            color: #0051ffd3;
-                            font-size: 2vw;"
-                            class="fa fa-pencil"
-                          ></i>
-                        </a>
-                        </button>
-                      </div>
+                      <a href="/admin/account/payment-account-details/<%= account.account_number %>">
+                        <div class="action-btn">
+                            <button class="btnEdit" >
+                              <i style="
+                                margin: 3px 0px;
+                                color: #0051ffd3;
+                                font-size: 2vw;"
+                                class="fa fa-pencil"
+                              ></i>
+                            </button>
+                        </div>
+                      </a>
                     </div>
                   </td>
                 </tr>
@@ -108,7 +109,7 @@
               <thead class="thead-light">
                 <tr class="tr-head">
                   <th scope="col">No</th>
-                  <th scope="col">Owner ID</th>
+                  <th scope="col">Owner</th>
                   <th scope="col">Account Number</th>
                   <th scope="col">Date Opened</th>
                   <th scope="col">Funds</th>
@@ -148,27 +149,26 @@
                     <%= account.closing_date %>
                   </td>
                   <td class="text-center">
-                    <% if(account.user.StatusID == 4){ %> Locked <% }
-                       else { %>
-                          Open <%
-                       }
-                    %>
+                    <% if(account.user.StatusID == 4){ %>
+                    <i  style="font-size: 40px;" class="fa fa-lock text-danger"></i>
+                    <% }else { %>
+                     <i  style="font-size: 40px;" class="fa fa-unlock text-success"></i>
+                    <%}%>
                   </td>
                   <td class="td-status">
                     <div class="status">
-                      <div class="action-btn">
-                        <button class="btnEdit"
-                        >
-                        <a href="/admin/account/payment-account-details/<%= account.account_number %>">
-                          <i style="
-                            margin: 3px 0px;
-                            color: #0051ffd3;
-                            font-size: 2vw;"
-                            class="fa fa-pencil"
-                          ></i>
-                        </a>
-                        </button>
-                      </div>
+                      <a href="/admin/account/savings-account-details/<%= account.account_number %>">
+                        <div class="action-btn">
+                          <button class="btnEdit" >
+                            <i style="
+                              margin: 3px 0px;
+                              color: #0051ffd3;
+                              font-size: 2vw;"
+                              class="fa fa-pencil"
+                            ></i>
+                          </button>
+                        </div>
+                      </a>
                     </div>
                   </td>
                 </tr>

@@ -27,9 +27,6 @@
           <h2>Account Management</h2>
         </div> -->
         <div class="main-content">
-          <div class="show-error">
-            <%- include('../ShowMessage')  %>
-          </div>
           <!-- <form method="GET" action="">
               <div class="input-group mb-3">
                 <input type="text" class="form-control" name="search" id="search" placeholder="User ID/Account Number">
@@ -39,6 +36,9 @@
               </div>
             </form> -->
           <h3 class="text-center text-light"><strong><%= account.user.customer.name %> 's Account Details</strong></h3></br>
+          <div class="show-error">
+            <%- include('../ShowMessage')  %>
+          </div>
 
           <% if(typeof account != 'null' && typeof account != 'undefined'){ %>
           <form method="POST">
@@ -64,7 +64,7 @@
 
               <div class="col-md-6">
                 <label class="row">Transfer Limit</label>
-                <input class="row myinput" required="required" type="text" name="transferLimit" id="transferLimit"
+                <input class="row myinput" required="required" type="number" name="transferLimit" id="transferLimit"
                   value="<%= account.transger_limit %>" />
               </div>
             </div>
@@ -72,7 +72,7 @@
             <div class="row">
               <div class="col-md-6">
                 <label class="row">Balance</label>
-                <input class="row myinput" required="required" type="nunmber" name="balance" id="balance"
+                <input class="row myinput" required="required" type="number" name="balance" id="balance"
                   value="<%= account.balance %>" />
               </div>
               <div class="col-md-6">
@@ -86,8 +86,74 @@
             <div class="row btnsub">
               <input id="Submit" type="submit" value="Update" class="btn" />
             </div>
-          </form>
+          </form></br></br>
           <% } %>
+
+          <h3 class="text-center text-light"><strong>Transaction history</strong></h3>
+            <form method="GET">
+              <div class="row d-flex justify-content-center">
+                <div class="col-md-2">
+                  <input class="row myinput" required="required" type="date" name="fromDate" id="fromDate"
+                  <% if (typeof fromDate != "undefined"){ %> value="<%= fromDate %>" <% } %>
+                  />
+                </div>
+                <div class="col-md-2">
+                  <input class="row myinput " required="required" type="date" name="toDate" id="toDate"
+                  <% if (typeof toDate != "undefined"){ %> value="<%= toDate %>" <% } %>
+                  />
+                </div>
+                  <div class="row btnsub">
+                    <button class="btn" type="submit" id="basic-addon2"><i class="fas fa-search"></i></button>
+                  </div>
+              </div>
+            </form>
+
+            <table class="table table-bordered" id="data">
+              <thead class="thead-light">
+                <tr class="tr-head">
+                  <th scope="col">No</th>
+                  <th scope="col">Transaction ID</th>
+                  <th scope="col">Desciption</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Currency</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">For Account Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (typeof transactions != "undefined") { %>
+                  <% transactions.forEach((transaction,index) => { %>
+                  <tr class="tr-data">
+                    <td class="text-center" scope="row"><%= index + 1 %></td>
+                    <td class="text-center">
+                      <%= transaction.transcation_id %>
+                    </td>
+                    <td class="text-center">
+                      <%= transaction.description %>
+                    </td>
+                    <% if (transaction.SourceID == account.account_number ){ %>
+                      <td class="text-center text-danger">
+                        -<%= transaction.amount %>
+                      </td>
+                    <% } else { %>
+                      <td class="text-center text-warning">
+                        +<%= transaction.amount %>
+                      </td>
+                    <% } %>
+                    <td class="text-center">
+                      <%= transaction.currency %>
+                    </td>
+                    <td class="text-center">
+                      <%= transaction.date %>
+                    </td>
+                    <td class="text-center">
+                      <%= transaction.DestinationID %>
+                    </td>
+                  </tr>
+                  <% }) %>
+                <% } %>
+              </tbody>
+            </table>
 
         </div>
 
