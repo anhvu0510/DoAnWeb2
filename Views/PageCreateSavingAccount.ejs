@@ -32,6 +32,15 @@
         <form method="POST" class="form-group">
 
           <div class="row">
+            <label for="paymentaccount">Select your payment account</label>
+            <select class="form-control" id="paymentaccount" name="paymentaccount">
+              <% for(var i=0; i<paymentaccounts.length; i++){ %>
+              <option><%= paymentaccounts[i].account_number %></option>
+              <% } %>
+            </select>
+          </div>
+
+          <div class="row">
              <label for="funds">Select funds</label>
           </div>
 
