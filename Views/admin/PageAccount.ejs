@@ -142,17 +142,17 @@
               <input disabled="true" type="date" value="<%=account.closing_date %>">
             </td>
             <td class="text-center">
-              <% if(account.user.StatusID == 4){ %> Locked <% }
-                       else { %>
-              Open <%
-                       }
-                    %>
+              <% if(account.user.StatusID == 4){ %>
+                  <i style="font-size: 40px;" class="fa fa-lock text-danger"></i>
+              <% }else { %>
+                  <i style="font-size: 40px;" class="fa fa-unlock text-success"></i>
+              <%}%>
             </td>
             <td class="td-status">
               <div class="status">
                 <div class="action-btn">
                   <button class="btnEdit">
-                    <a href="/admin/account/payment-account-details/<%= account.account_number %>">
+                    <a href="/admin/account/savings-account-details/<%= account.account_number %>">
                       <i style="
                             margin: 3px 0px;
                             color: #0051ffd3;

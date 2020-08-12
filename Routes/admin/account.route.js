@@ -23,15 +23,15 @@ Router.get("/", async (req, res) => {
             {
               model: Customer,
               where: {},
-              attributes: ["name"],
-            },
+              attributes: ["name"]
+            }
           ],
           raw: true,
-          nest: true,
-        },
+          nest: true
+        }
       ],
       raw: true,
-      nest: true,
+      nest: true
     });
 
     const savingsAccounts = await Savings.findAll({
@@ -39,54 +39,54 @@ Router.get("/", async (req, res) => {
       include: [
         {
           model: User,
-          where: {},
-        },
-      ],
+          where: {}
+        }
+      ]
     });
     res.render("admin/PageAccount", {
       title: "Account Managament",
       CustomerName: "Staff",
       isActive: 2,
       paymentAccounts,
-      savingsAccounts,
+      savingsAccounts
     });
   } else {
     const paymentAccounts = await Payment.findAll({
       where: {
         [Op.or]: [
           { userId: { [Op.substring]: req.query.search.trim() } },
-          { account_number: { [Op.substring]: req.query.search.trim() } },
-        ],
+          { account_number: { [Op.substring]: req.query.search.trim() } }
+        ]
       },
-      include: [  
+      include: [
         {
           model: User,
           where: {},
           include: [
             {
               model: Customer,
-              where : {},
-              attributes: ["name"],
-            },
-          ],
-        },
+              where: {},
+              attributes: ["name"]
+            }
+          ]
+        }
       ],
       raw: true,
-      nest: true,
+      nest: true
     });
     const savingsAccounts = await Savings.findAll({
       where: {
         [Op.or]: [
           { userId: { [Op.substring]: req.query.search } },
-          { account_number: { [Op.substring]: req.query.search } },
-        ],
+          { account_number: { [Op.substring]: req.query.search } }
+        ]
       },
       include: [
         {
           model: User,
-          where: {},
-        },
-      ],
+          where: {}
+        }
+      ]
     });
 
     res.render("admin/PageAccount", {
@@ -94,12 +94,12 @@ Router.get("/", async (req, res) => {
       CustomerName: "Staff",
       isActive: 2,
       paymentAccounts,
-      savingsAccounts,
+      savingsAccounts
     });
   }
 });
-Router
-  .get("/payment-account-details/:accountNumber", async (req, res) => {
+
+Router.get("/payment-account-details/:accountNumber", async (req, res) => {
   if (typeof req.params.accountNumber != "undefined") {
     const accountNumber = req.params.accountNumber;
     const account = await Payment.findOne({
@@ -112,13 +112,13 @@ Router
             {
               model: Customer,
               where: {},
-              attributes: ["name"],
-            },
-          ],
-        },
+              attributes: ["name"]
+            }
+          ]
+        }
       ],
       raw: true,
-      nest: true,
+      nest: true
     });
 
     let calFromDate, calToDate, transactions;
@@ -182,7 +182,7 @@ Router
     dateOpened,
     balance,
     currency,
-    transferLimit,
+    transferLimit
   } = req.body;
 
   const isSuccess = await Payment.update(
@@ -190,10 +190,10 @@ Router
       issue_date: dateOpened,
       balance: balance,
       currency: currency,
-      transger_limit: transferLimit,
+      transger_limit: transferLimit
     },
     {
-      where: { account_number: accountNumber },
+      where: { account_number: accountNumber }
     }
   );
 
@@ -202,9 +202,9 @@ Router
     include: [
       {
         model: User,
-        where: {},
-      },
-    ],
+        where: {}
+      }
+    ]
   });
   if (isSuccess[0] === 1) {
     req.flash(
