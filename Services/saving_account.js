@@ -17,10 +17,10 @@ SavingsAccount.init(
             allowNull: false,
             primaryKey: true,
         },
-        payment_account: {
-            type: Sequelize.STRING,
-            allowNull: false,
-        },
+        // payment_account: {
+        //     type: Sequelize.STRING,
+        //     allowNull: false,
+        // },
         issue_date: {
             type: Sequelize.DATEONLY,
         },

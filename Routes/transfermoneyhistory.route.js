@@ -11,7 +11,11 @@ Router.get('/', async (req, res) => {
         }
     });
 
-    res.render('PageTransferMoneyHistory',{title : 'Transfer Money History', paymentaccounts: paymentaccounts});
+    res.render('PageTransferMoneyHistory',
+        {
+            title: 'Transfer Money History',
+            paymentaccounts: paymentaccounts
+        });
 })
 Router.post('/',async (req, res) => {
     const { account } = req.body;
@@ -33,7 +37,8 @@ Router.post('/',async (req, res) => {
     res.render('PageTransferMoneyHistory', {
         title: 'Transfer Money History',
         paymentaccounts: paymentaccounts,
-        historyList: transactions
+        historyList: transactions,
+        queryAccount : account
     });
 });
 module.exports = Router;

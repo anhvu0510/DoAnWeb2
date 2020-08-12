@@ -276,7 +276,7 @@ a {
 }
 
 .form {
-  min-height: 550px;
+  min-height: 650px;
   display: flex;
   justify-content: start;
   align-items: center;

@@ -7,14 +7,10 @@ Router.get('/', async (req, res) => {
     const paymentaccounts = await PaymentAccount.findAll({
         where:{
             userId: req.user.id
-        }
+        },
+        raw: true
     });
-    const savingaccounts = await SavingAccount.findAll({
-        where:{
-            userId: req.user.id
-        }
-    });
-    res.render('PageCustomerAccount',{title : 'Customer Acoount', paymentaccounts: paymentaccounts, savingaccounts: savingaccounts});
+    res.render('PageCustomerAccount',{title : 'Customer Acoount', paymentaccounts: paymentaccounts});
 })
 
 module.exports = Router;

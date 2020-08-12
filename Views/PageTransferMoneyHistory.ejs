@@ -25,7 +25,7 @@
     <div class="row form gradient-bg">
       <div class="row form-title">
 
-        <h2>Internal Transfer</h2>
+        <h2>Transfer Transaction</h2>
         <%- include('ShowMessage') %>
       </div>
       <div class="row form-main">
@@ -44,66 +44,69 @@
         </form>
       </div>
 
-       <div style="width: 90%; margin-top: 20px;" class="row ">
-          <table id="Saving" class="table table-bordered">
-            <thead class="thead-light">
-              <tr class="tr-head">
-                 <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Transaction ID</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Currency</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Source Account</th>
-                    <th scope="col">Destination Account</th>
-                  </tr>
-              </tr>
-            </thead>
-            <% if (typeof(historyList) !== 'undefined') { %>
-             <tbody>
-              <% historyList.forEach((account,index) => { %>
-              <tr class="tr-data">
-                <th name="savingsAccountId" id="savingsAccountId" style="display: none;"><%= account.id %></th>
-                <th class="text-center" scope="row"><%= index + 1 %></th>
-                <td  class="text-center num_account">
-                  <%= account.transcation_id %>
-                </td>
-                <td class="text-center fund" >
-                  <%= account.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
-                </td>
-                <td class="text-center currency" >
-                  <%= account.currency.toUpperCase() %>
-                </td>
-                <td class="text-center">
-                  <%= account.description %>
-                </td>
-                <td class="text-center">
-                  <%= account.date.toLocaleDateString() %>
-                </td>
-                <td class="text-center">
-                  <%= account.SourceID %>
-                </td>
-                 <td class="text-center">
-                  <%= account.DestinationID %>
-                </td>
-              </tr>
-              <% }) %>
-            </tbody>
-            <% } %>
-            
-          </table>
-        </div>
+      <div style="width: 90%; margin-top: 20px;" class="row ">
+        <table id="Saving" class="table table-bordered">
+          <thead class="thead-light">
+            <tr class="tr-head">
+            <tr>
+              <th class="text-center" scope="col">STT</th>
+              <th class="text-center" scope="col">Transaction ID</th>
+              <th class="text-center" scope="col">Account Send</th>
+              <th class="text-center" scope="col">Account Recive</th>
+              <th class="text-center" scope="col">Note</th>
+              <th class="text-center" scope="col">Date</th>
+              <th class="text-center" scope="col">Money</th>
+             
+
+
+            </tr>
+            </tr>
+          </thead>
+          <% if (typeof(historyList) !== 'undefined') { %>
+          <tbody>
+            <% historyList.forEach((account,index) => { %>
+            <tr class="tr-data">
+              <th name="savingsAccountId" id="savingsAccountId" style="display: none;"><%= account.id %></th>
+              <th class="text-center" scope="row"><%= index + 1 %></th>
+              <td class="text-center num_account">
+                <%= account.transcation_id %>
+              </td>
+              <td class="text-center">
+                <%= account.SourceID %>
+              </td>
+              <td class="text-center">
+                <%= account.DestinationID %>
+              </td>
+              <td class="text-center">
+                <%= account.description %>
+              </td>
+              <td class="text-center">
+                <%= account.date.toLocaleDateString() %>
+              </td>
+              <td class="text-center fund">
+                <% if (queryAccount === account.SourceID) { %>
+                <p style="font-size: larger; font-weight: bolder; color: red;">
+                  - <%= account.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+                    <%= account.currency.toUpperCase() %>
+                </p>
+                <% } else{ %>
+                <p style="font-size: larger; font-weight: bolder; color: greenyellow;">
+                  + <%= account.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+                     <%= account.currency.toUpperCase() %>
+                </p>
+                <% } %>
+              </td>
+              
+            </tr>
+            <% }) %>
+          </tbody>
+          <% } %>
+
+        </table>
+      </div>
 
 
     </div>
   </div>
 </body>
 <%- include("PageFooter") %>
-
-
-
-
-
-
-

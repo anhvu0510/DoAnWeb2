@@ -74,7 +74,7 @@ Router.post('/',async (req, res) => {
         
             const newSavingacoount = await SavingAccount.create({
                 account_number: accountnumber,
-                payment_account: paymentaccount,
+                //payment_account: paymentaccount,
                 issue_date: new Date(),
                 funds: funds,
                 currency: currency,
@@ -87,7 +87,7 @@ Router.post('/',async (req, res) => {
                 transcation_id: uuid.v4(),
                 amount: funds,
                 currency: currency,
-                description: "Create Saving Account",
+                description: "Send Saving",
                 date: new Date(),
                 SourceID: paymentaccount,
                 DestinationID: accountnumber
