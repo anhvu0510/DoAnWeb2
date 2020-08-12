@@ -10,11 +10,12 @@ Router.get('/', async (req, res) => {
             userId: req.user.id
         }
     });
-
+   
     res.render('PageTransferMoneyHistory',
         {
             title: 'Transfer Money History',
-            paymentaccounts: paymentaccounts
+            paymentaccounts: paymentaccounts,
+            
         });
 })
 Router.post('/',async (req, res) => {

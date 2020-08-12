@@ -32,19 +32,25 @@ Router
             const ReciveNumber = req.body.AccountNumber.trim();
             const Currency = req.body.frmCur
             
+            
             const Send = await SavingAccount.findByPk(SendNumber, { raw: true });
-            const Recive = await PaymentAcount.findByPk(ReciveNumber, { attributes: ['currency','balance'], raw: true })
+            
+            const Recive = await PaymentAcount.findByPk(ReciveNumber, { attributes: ['currency', 'balance'], raw: true })
+            
             const newMoney = new Date().getTime() >= new Date(Send.closing_date).getTime() ?
                 Send.funds + (Send.funds * Send.interest_rate) : Send.funds
+            
             const Money = Recive.balance + (Recive.currency.toUpperCase() === Currency ?
                 newMoney : Currency === 'VND' ? (newMoney / 20000) : (newMoney * 20000))
-
+            const MoneyRecive = Recive.currency.toUpperCase() === Send.currency.toUpperCase() ?
+                                newMoney : Recive.currency.toUpperCase() === 'VND' ?
+                                (newMoney * 20000) : (newMoney / 20000)
             PaymentAcount
                 .update({ balance: Money }, { where: { account_number : ReciveNumber } })
                 .then(async (rs) => {
                     const newtransaction = await Transaction.create({
                         transcation_id: uuid.v4(),
-                        amount: newMoney,
+                        amount: MoneyRecive,
                         currency: Recive.currency,
                         description: 'Withdraw Saving Money',
                         date: new Date(),
@@ -56,7 +62,7 @@ Router
                         .then(async (item) => {
                             await SavingAccount.destroy({ where: { account_number :  SendNumber } })
                             await SendMailTransferMoney(req.user.email, "TransferMoney",
-                                `${newMoney.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} ${Recive.currency}`);
+                                `${MoneyRecive} ${Recive.currency}`);
                             req.flash('success_msg', 'TransferMoney Success')
                             res.redirect('/features/bank-saving')
                         })
