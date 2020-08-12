@@ -20,7 +20,7 @@ body {
   justify-content: center;
 }
 td {
-    text-align: center;
+  text-align: center;
 }
 a.mybtn {
   display: inline-block;
@@ -151,7 +151,7 @@ a.mybtn:hover {
     #2dd3aa 100%,
     #2dd3aa 100%
   );
-  width: 200px;
+  width: 220px;
   border-radius: 5px;
   color: white;
   font-size: 25px;
@@ -208,7 +208,20 @@ a.mybtn:hover {
     #2dd3aa 100%,
     #2dd3aa 100%
   );
+  color: white;
 }
+li > a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
 .content {
   width: 100%;
   flex-wrap: wrap;
@@ -263,9 +276,9 @@ a {
 }
 
 .form {
-  min-height: 650px;
+  min-height: 550px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
   width: 100%;
@@ -748,4 +761,13 @@ tr.tr-head {
   top: 20px;
   left: 30%;
   display: none;
+}
+
+td > input[type="date"] {
+  outline: none;
+  color: white;
+  background-color: transparent;
+  font-weight: bold;
+  text-align: center;
+  border: none;
 }

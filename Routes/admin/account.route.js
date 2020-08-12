@@ -3,7 +3,7 @@ const Router = Express.Router();
 const User = require("../../Services/user");
 const Payment = require("../../Services/payment_account");
 const Savings = require("../../Services/saving_account");
-const Customer = require('../../Services/customer')
+const Customer = require("../../Services/customer");
 const { Op } = require("sequelize");
 const { isStaff } = require("../../Middleware/auth");
 
@@ -16,33 +16,37 @@ Router.get("/", async (req, res) => {
       include: [
         {
           model: User,
-          attributes:['StatusID'],
+          attributes: ["StatusID"],
           where: {},
           include: [
             {
               model: Customer,
               where: {},
               attributes: ["name"],
-            }
-          ], raw: true, nest: true
-        }
-      ],raw: true,nest : true
+            },
+          ],
+          raw: true,
+          nest: true,
+        },
+      ],
+      raw: true,
+      nest: true,
     });
     const savingsAccounts = await Savings.findAll({
       where: {},
       include: [
         {
           model: User,
-          where: {}
-        }
-      ]
+          where: {},
+        },
+      ],
     });
     res.render("admin/PageAccount", {
       title: "Account Managament",
       CustomerName: "Staff",
       isActive: 2,
       paymentAccounts,
-      savingsAccounts
+      savingsAccounts,
     });
   } else {
     const paymentAccounts = await Payment.findAll({
@@ -50,33 +54,37 @@ Router.get("/", async (req, res) => {
         [Op.or]: [
           { userId: { [Op.substring]: req.query.search.trim() } },
           { account_number: { [Op.substring]: req.query.search.trim() } },
-        ]
+        ],
       },
       include: [
         {
           model: User,
           where: {},
-          include: [{
+          include: [
+            {
               model: Customer,
-              where: {},
+              where : {},
               attributes: ["name"],
-          }]
-        }
-      ],raw : true , nest : true 
+            },
+          ],
+        },
+      ],
+      raw: true,
+      nest: true,
     });
     const savingsAccounts = await Savings.findAll({
       where: {
         [Op.or]: [
           { userId: { [Op.substring]: req.query.search } },
-          { account_number: { [Op.substring]: req.query.search } }
-        ]
+          { account_number: { [Op.substring]: req.query.search } },
+        ],
       },
       include: [
         {
           model: User,
-          where: {}
-        }
-      ]
+          where: {},
+        },
+      ],
     });
 
     res.render("admin/PageAccount", {
@@ -84,32 +92,36 @@ Router.get("/", async (req, res) => {
       CustomerName: "Staff",
       isActive: 2,
       paymentAccounts,
-      savingsAccounts
+      savingsAccounts,
     });
   }
 });
-
-
-Router.get("/payment-account-details/:accountNumber", async (req, res) => {
+Router
+  .get("/payment-account-details/:accountNumber", async (req, res) => {
   if (typeof req.params.accountNumber != "undefined") {
     const account = await Payment.findOne({
       where: { account_number: req.params.accountNumber },
-      include: [{
+      include: [
+        {
           model: User,
           where: {},
-          include : [{
-            model: Customer ,
-            where: {},
-            attributes : ['name']
-          }]
-        }
-      ],raw : true , nest: true
+          include: [
+            {
+              model: Customer,
+              where: {},
+              attributes: ["name"],
+            },
+          ],
+        },
+      ],
+      raw: true,
+      nest: true,
     });
     res.render("admin/PagePaymentAccountDetails", {
       title: "Payment Account Details",
       CustomerName: "Staff",
       isActive: 2,
-      account
+      account,
     });
   }
 }).post("/payment-account-details/:acocuntNumber", async (req, res) => {
@@ -119,7 +131,7 @@ Router.get("/payment-account-details/:accountNumber", async (req, res) => {
     dateOpened,
     balance,
     currency,
-    transferLimit
+    transferLimit,
   } = req.body;
 
   const isSuccess = await Payment.update(
@@ -127,10 +139,10 @@ Router.get("/payment-account-details/:accountNumber", async (req, res) => {
       issue_date: dateOpened,
       balance: balance,
       currency: currency,
-      transger_limit: transferLimit
+      transger_limit: transferLimit,
     },
     {
-      where: { account_number: accountNumber }
+      where: { account_number: accountNumber },
     }
   );
 
@@ -139,9 +151,9 @@ Router.get("/payment-account-details/:accountNumber", async (req, res) => {
     include: [
       {
         model: User,
-        where: {}
-      }
-    ]
+        where: {},
+      },
+    ],
   });
   if (isSuccess[0] === 1) {
     req.flash("success_msg", "Customer's payment account updated successfully");

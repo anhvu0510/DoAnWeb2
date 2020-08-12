@@ -15,6 +15,12 @@ Router.get('/', async (req, res) => {
 })
 Router.post('/',async (req, res) => {
     const { account } = req.body;
+    const paymentaccounts = await PaymentAccount.findAll({
+        where: {
+            userId: req.user.id
+        }
+    });
+
     const transactions = await Transaction.findAll({
         where: {
             [Op.or]: [
@@ -24,6 +30,10 @@ Router.post('/',async (req, res) => {
           }
     });
 
-    res.render('PageTransferMoneyHistoryList',{title : 'Transfer Money History', transactions: transactions});
+    res.render('PageTransferMoneyHistory', {
+        title: 'Transfer Money History',
+        paymentaccounts: paymentaccounts,
+        historyList: transactions
+    });
 });
 module.exports = Router;

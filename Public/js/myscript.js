@@ -75,5 +75,16 @@ $(document).ready(function () {
         $("#imgEndFile").trigger("click");
     });
 
+    //Saving
+    $('.btnSaving').on('click', () => {
+        $('.edit').fadeIn('slow');
+    })
 
+    $('#Saving').on('click', '.btnSaving', function () {
+        console.log($(this).closest('tr'));
+        const row = $(this).closest('tr')
+        $("input[name='frmNumberAccount']").val(row.find('.num_account').text().trim())
+        $("input[name='frmFund']").val(row.find('.fund').text().trim())
+        $("input[name='frmCur']").val(row.find('.currency').text().trim())
+    })
 });

@@ -21,6 +21,7 @@
                 </div>
             </div>
         </div>
+        <%- include('Partials/menu') %> 
         <div class="row form gradient-bg">
             <div class="row form-title">
 
@@ -32,7 +33,8 @@
                 <form method="POST" class="form-group" id="FormInfo" name="FormInfo">
                     <div class="row">
                         <label class="row">Name</label>
-                        <input class="row myinput text-white bg-secondary" type="text" name="name" id="name" required="required" value="<%= name %>" readonly="readonly"/>
+                        <input class="row myinput text-white bg-secondary" type="text" name="name" id="name"
+                            required="required" value="<%= name %>" readonly="readonly" />
                     </div>
 
                     <div class="row form-row">
@@ -52,32 +54,36 @@
                     <div class="row">
                         <label class="row">Phone Number</label>
                         <input class="row myinput" type="text" name="phone" id="phone" value="<%= phone %>" />
-                    </div>
-                    <div class="row">
-                        <label class="row">Address</label>
-                        <input class="row myinput" type="text" name="address" id="address" value="<%= address %>" />
-                    </div>
+                        </div>
+                        <div class="row">
+                            <label class="row">Address</label>
+                            <input class="row myinput" type="text" name="address" id="address" value="<%= address %>" />
+                        </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label class="row" for="identify"> Identity Papers</label>
-                            <input class="row myinput text-white bg-secondary" type="text" name="identify" id="identify" value="<%= identify %>" readonly="readonly" />
-                        </div>
-                        <div class="col-md-4">
-                            <label class="row" for="identifyID">Identify Number</label>
-                            <input type="text" class="row myinput text-white bg-secondary" name="identifyID" id="identifyID" value="<%= identifyID %>" readonly="readonly" />
-                        </div>
-                        <div class="col-md-4">
-                            <label class="row" for="identifyDate">Identify Date</label>
-                            <div>
-                                <input class="row myinput text-white bg-secondary" id="identifyDate" name="identifyDate" type="date" value="<%= identifyDate %>" readonly="readonly" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="row" for="identify"> Identity Papers</label>
+                                <input class="row myinput text-white bg-secondary" type="text" name="identify"
+                                    id="identify" value="<%= identify %>" readonly="readonly" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="row" for="identifyID">Identify Number</label>
+                                <input type="text" class="row myinput text-white bg-secondary" name="identifyID"
+                                    id="identifyID" value="<%= identifyID %>" readonly="readonly" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="row" for="identifyDate">Identify Date</label>
+                                <div>
+                                    <input class="row myinput text-white bg-secondary" id="identifyDate"
+                                        name="identifyDate" type="date" value="<%= identifyDate %>"
+                                        readonly="readonly" />
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row btnsub">
-                        <input id="Submit" type="submit" value="Update" class="btn" />
-                    </div>
+                        <div class="row btnsub">
+                            <input id="Submit" type="submit" value="Update" class="btn" />
+                        </div>
                 </form>
             </div>
         </div>

@@ -1,0 +1,52 @@
+<div  class="row form-main gradient-bg">
+  
+    <form method="POST" class="form-group" id="FormSaving" name="FormSaving">
+         <div style="display: flex; justify-content: flex-end;" class="row">
+            <button id="btnClose" style="
+                    width: 30px;
+                    height: 30px;
+                    color: white;
+                    background-color: #f14e4e;
+                  ">
+                <i class="fa fa-close"></i>
+            </button>
+        </div>
+          <h3  style="margin: 20px 0px; text-align: center; font-size: 3rem; font-weight: bold; color: white;">Withdraw Saving Money</h3>
+        <div class="row">
+            <div class="col-md-5">
+                <label class="row">Saving Account Number</label>
+                <input readonly style="color: black;font-weight: bold; text-align: end;padding-right: 20px;"
+                class="row myinput" type="text" 
+                name="frmNumberAccount" 
+                id="frmNumberAccount" />
+            </div>
+            <div class="col-md-4">
+                <label class="row">Fund</label>
+                <input style="color: black;font-weight: bold; text-align: end;padding-right: 20px;" 
+                readonly class="row myinput" type="text" name="frmFund" id="frmFund" />
+            </div>
+            <div class="col-md-3">
+                <label class="row">Currency</label>
+                <input style="color: black;font-weight: bold; text-align: end;padding-right: 20px;" 
+                readonly class="row myinput" type="text" name="frmCur" id="frmCur" />
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <label class="row" for="AccountNumber">Money Receiving Payment Account</label>
+            <select class="row myinput" id="AccountNumber" name="AccountNumber">
+                <% Payments.forEach((item) => { %>
+                    <option value="<%= item.account_number %> ">
+                        <%= item.account_number %> 
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="row btnsub">
+            <input id="Submit" type="submit" value="Submit" class="btn" />
+        </div>
+    </form>
+</div>

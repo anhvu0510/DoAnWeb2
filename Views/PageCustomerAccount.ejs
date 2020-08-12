@@ -6,11 +6,11 @@
     <div class="loader"></div>
   </div>
 
-  <div class="wrap">
+  <div class="container-fluid mycontainer">
     <div class="header">
       <div class="header-title">
         <div class="header-title-img">
-          <img src="../img/logo.png" alt="" />
+          <img src="../../img/logo.png" alt="" />
         </div>
         <div class="header-title-btn">
           <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
@@ -20,122 +20,57 @@
           </a>
         </div>
       </div>
-      <nav class="header-menu">
-        <ul class="menu-lv1">
-          <li><i class="fas fa-home"></i> <a class="home" href="/features">Home</a> </li>
-          <li>
-            <i class="fas fa-university"></i> Transfer
-            <ul class="menu-lv2">
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-            </ul>
-          </li>
-          <li>
-            <i style="margin: 0 5px 0 0;" class="fa fa-credit-card-alt"></i>
-            Account
-            <ul class="menu-lv2">
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-            </ul>
-          </li>
-          <li>
-            <i class="fa fa-info-circle"></i> Customer
-            <ul class="menu-lv2">
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-            </ul>
-          </li>
-          <li>
-            <i style="margin: 0 5px 0 0;" class="fa fa-money"></i> Saving
-            <ul class="menu-lv2">
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-              <li>item 01</li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      <%- include('Partials/menu') %> 
     </div>
-    <div class="content gradient-bg">
-      <section class="features-section ">
-        <div class="container text-white">
-          <div class="section-title text-center content-title">
-            <h2>
-                List Payment Account
-            </h2>
-            <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Account number</th>
-                    <th scope="col">Issue date</th>
-                    <th scope="col">Balance</th>
-                    <th scope="col">Currency</th>
-                    <th scope="col">Transger limit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <% for(var i=0; i<paymentaccounts.length; i++){ %>
-                        <tr>
-                            <th scope="row"><%= (i + 1)%> </th>
-                            <td><%= paymentaccounts[i].account_number %> </td>
-                            <td><%= paymentaccounts[i].issue_date %> </td>
-                            <td><%= paymentaccounts[i].balance %> </td>
-                            <td><%= paymentaccounts[i].currency %> </td>
-                            <td><%= paymentaccounts[i].transger_limit %> </td>
-                          </tr>
-                    <% } %>
-                </tbody>
-            </table>
-            <h2>
-                List Saving Account
-            </h2>
-            <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Account number</th>
-                    <th scope="col">Issue date</th>
-                    <th scope="col">Funds</th>
-                    <th scope="col">Currency</th>
-                    <th scope="col">Interest rate</th>
-                    <th scope="col">Term (months)</th>
-                    <th scope="col">Closing date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <% for(var i=0; i<savingaccounts.length; i++){ %>
-                        <tr>
-                            <th scope="row"><%= (i + 1)%> </th>
-                            <td><%= savingaccounts[i].account_number %> </td>
-                            <td><%= savingaccounts[i].issue_date %> </td>
-                            <td><%= savingaccounts[i].funds %> </td>
-                            <td><%= savingaccounts[i].currency %> </td>
-                            <td><%= savingaccounts[i].interest_rate * 100 %> %</td>
-                            <td><%= savingaccounts[i].term %> </td>
-                            <td><%= savingaccounts[i].closing_date %> </td>
-                          </tr>
-                    <% } %>
-                </tbody>
-            </table>
-          </div>
-        </div>
+    <div class="row form gradient-bg">
+      <div class="row form-title">
+        <h2>Payment Accounts</h2>
+        <%- include('ShowMessage') %>
+      </div>
+      <div style="width: 70%;" class="row ">
+        <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr class="tr-head">
+            <th scope="col"></th>
+            <th scope="col">Account number</th>
+            <th scope="col">Issue date</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Transger limit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% paymentaccounts.forEach((account,index) => { %>
+          <tr class="tr-data">
+            <th name="savingsAccountId" id="savingsAccountId" style="display: none;"><%= account.id %></th>
+            <th class="text-center" scope="row"><%= index + 1 %></th>
+            <td class="text-center">
+              <%= account.account_number %>
+            </td>
+            <td class="text-center">
+              <input disabled="true" type="date" value="<%= account.issue_date %>">
+            </td>
+            <td class="text-center">
+                <%= account.balance.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+            </td>
+            <td class="text-center">
+              <%= account.currency.toUpperCase() %>
+            </td>
+            <td class="text-center">
+              <%= account.transger_limit.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      </div>
     </div>
-    </section>
-  </div>
+
   </div>
 </body>
 
 
 <%- include("PageFooter") %>
+
+
+

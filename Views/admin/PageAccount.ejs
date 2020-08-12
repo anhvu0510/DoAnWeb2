@@ -6,180 +6,171 @@
     <div class="loader"></div>
   </div>
   <div class="container-fluid dashboard">
-      <div class="row db-header">
-         <div class="header-title-img">
-          <img src="../img/logo.png" alt="" />
-        </div>
-        <div class="header-title-btn">
-          <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
-          <a
-            href="/logout"
-            class="mybtn test__link"
-            style="background-color: #f14e4e;"
-          >
-            <i class="fa fa-power-off" aria-hidden="true"></i>
-            Sign Out
-          </a>
-        </div>
+    <div class="row db-header">
+      <div class="header-title-img">
+        <img src="../img/logo.png" alt="" />
       </div>
-      <div class="row db-content">
-        <div class="content-menu">
-           <%- include('Partials/MenuSide') %>
-        </div>
-        <div class=" gradient-bg content-main">
-          <div class="main-title">
-            <h2>Account Management</h2>
-          </div>
-          <div class="main-content">
-            <div class="show-error">
-               <%- include('../ShowMessage')  %>
-            </div>
-            <form method="GET">
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" name="search" id="search" placeholder="User ID/Account Number">
-                <div class="input-group-append">
-                  <button class="input-group-text" type="submit" id="basic-addon2"><i class="fas fa-search"></i></button>
-                </div>
-              </div>
-            </form>
-            <h3 class="text-center text-light"><strong>Customer Payment Accounts</strong></h3></br>
-            <table class="table table-bordered" id="data">
-              <thead class="thead-light">
-                <tr class="tr-head">
-                  <th scope="col">No</th>
-                  <th scope="col">Owner</th>
-                  <th scope="col">Account Number</th>
-                  <th scope="col">Balance</th>
-                  <th scope="col">Currency</th>
-                  <th scope="col">Transfer Limit</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% paymentAccounts.forEach((account,index) => { %>
-                <tr class="tr-data">
-                  <th class="text-center" scope="row"><%= index + 1 %></th>
-                  <td class=" text-center"><%= account.user.customer.name %></td>
-                  <td class="text-center">
-                    <%= account.account_number %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.balance %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.currency %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.transger_limit %>
-                  </td>
-                  <td class="text-center">
-                    <% if(account.user.StatusID == 4){ %>  
-                    <i  style="font-size: 40px;" class="fa fa-lock text-danger"></i> 
-                    <% }else { %>
-                     <i  style="font-size: 40px;" class="fa fa-unlock text-success"></i>
-                    <%}%>
-                  </td>
-                  <td class="td-status">
-                    <div class="status">
-                      <div class="action-btn">
-                        <button class="btnEdit"
-                        >
-                        <a href="/admin/account/payment-account-details/<%= account.account_number %>">
-                          <i style="
-                            margin: 3px 0px;
-                            color: #0051ffd3;
-                            font-size: 2vw;"
-                            class="fa fa-pencil"
-                          ></i>
-                        </a>
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <% }) %>
-              </tbody>
-            </table>
-
-
-              <h3 class="text-center text-light"><strong>Customer Savings Accounts</strong></h3></br>
-            <table class="table table-bordered" >
-              <thead class="thead-light">
-                <tr class="tr-head">
-                  <th scope="col">No</th>
-                  <th scope="col">Owner ID</th>
-                  <th scope="col">Account Number</th>
-                  <th scope="col">Date Opened</th>
-                  <th scope="col">Funds</th>
-                  <th scope="col">Currency</th>
-                  <th scope="col">Interest Rate</th>
-                  <th scope="col">Term(Months)</th>
-                  <th scope="col">Closing Date</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% savingsAccounts.forEach((account,index) => { %>
-                <tr class="tr-data">
-                  <th name="savingsAccountId" id="savingsAccountId" style="display: none;"><%= account.id %></th>
-                  <th class="text-center" scope="row"><%= index + 1 %></th>
-                  <td class="text-center"><%= account.userId %></td>
-                  <td class="text-center">
-                    <%= account.account_number %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.issue_date %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.funds %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.currency %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.interest_rate %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.term %>
-                  </td>
-                  <td class="text-center">
-                    <%= account.closing_date %>
-                  </td>
-                  <td class="text-center">
-                    <% if(account.user.StatusID == 4){ %> Locked <% }
-                       else { %>
-                          Open <%
-                       }
-                    %>
-                  </td>
-                  <td class="td-status">
-                    <div class="status">
-                      <div class="action-btn">
-                        <button class="btnEdit"
-                        >
-                        <a href="/admin/account/payment-account-details/<%= account.account_number %>">
-                          <i style="
-                            margin: 3px 0px;
-                            color: #0051ffd3;
-                            font-size: 2vw;"
-                            class="fa fa-pencil"
-                          ></i>
-                        </a>
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <% }) %>
-              </tbody>
-            </table>
-        </div>
-
-        </div>
+      <div class="header-title-btn">
+        <div class="header-title-btn__name">Hello, <%=CustomerName%></div>
+        <a href="/logout" class="mybtn test__link" style="background-color: #f14e4e;">
+          <i class="fa fa-power-off" aria-hidden="true"></i>
+          Sign Out
+        </a>
       </div>
     </div>
+    <div class="row db-content">
+      <div class="content-menu">
+        <%- include('Partials/MenuSide') %>
+      </div>
+      <div class=" gradient-bg content-main">
+        <div class="main-title">
+          <h2>Account Management</h2>
+        </div>
+        <div class="main-content">
+          <div class="show-error">
+            <%- include('../ShowMessage')  %>
+          </div>
+          <form method="GET">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="search" id="search" placeholder="User ID/Account Number">
+              <div class="input-group-append">
+                <button class="input-group-text" type="submit" id="basic-addon2"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+          <h3 class="text-center text-light"><strong>Customer Payment Accounts</strong></h3></br>
+          <table class="table table-bordered" id="data">
+            <thead class="thead-light">
+              <tr class="tr-head">
+                <th scope="col">No</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Account Number</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Currency</th>
+                <th scope="col">Transfer Limit</th>
+                <th scope="col">Status</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% paymentAccounts.forEach((account,index) => { %>
+              <tr class="tr-data">
+                <th class="text-center" scope="row"><%= index + 1 %></th>
+                <td class=" text-center"><%= account.user.customer.name %></td>
+                <td class="text-center">
+                  <%= account.account_number %>
+                </td>
+                <td class="text-center">
+                  <%= account.balance.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+                </td>
+                <td class="text-center">
+                  <%= account.currency %>
+                </td>
+                <td class="text-center">
+                  <%= account.transger_limit.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+                </td>
+                <td class="text-center">
+                  <% if(account.user.StatusID == 4){ %>
+                  <i style="font-size: 40px;" class="fa fa-lock text-danger"></i>
+                  <% }else { %>
+                  <i style="font-size: 40px;" class="fa fa-unlock text-success"></i>
+                  <%}%>
+                  </td>
+                  <td class="td-status">
+                    <div class="status">
+                      <div class="action-btn">
+                        <button class="btnEdit"
+                        >
+                        <a href="/admin/account/payment-account-details/<%= account.account_number %>">
+                  <i style="
+                            margin: 3px 0px;
+                            color: #0051ffd3;
+                            font-size: 2vw;" class="fa fa-pencil"></i>
+                  </a>
+                  </button>
+        </div>
+      </div>
+      </td>
+      </tr>
+      <% }) %>
+      </tbody>
+      </table>
+
+
+      <h3 class="text-center text-light"><strong>Customer Savings Accounts</strong></h3></br>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr class="tr-head">
+            <th scope="col">No</th>
+            <th scope="col">Owner ID</th>
+            <th scope="col">Account Number</th>
+            <th scope="col">Date Opened</th>
+            <th scope="col">Funds</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Interest Rate</th>
+            <th scope="col">Term(Months)</th>
+            <th scope="col">Closing Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% savingsAccounts.forEach((account,index) => { %>
+          <tr class="tr-data">
+            <th name="savingsAccountId" id="savingsAccountId" style="display: none;"><%= account.id %></th>
+            <th class="text-center" scope="row"><%= index + 1 %></th>
+            <td class="text-center"><%= account.userId %></td>
+            <td class="text-center">
+              <%= account.account_number %>
+            </td>
+            <td class="text-center">
+              <input disabled="true" type="date" value="<%= account.issue_date %>">
+            </td>
+            <td class="text-center">
+              <%= account.funds.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+            </td>
+            <td class="text-center">
+              <%= account.currency %>
+            </td>
+            <td class="text-center">
+              <%= account.interest_rate %>
+            </td>
+            <td class="text-center">
+              <%= account.term %>
+            </td>
+            <td class="text-center">
+              <input disabled="true" type="date" value="<%=account.closing_date %>">
+            </td>
+            <td class="text-center">
+              <% if(account.user.StatusID == 4){ %> Locked <% }
+                       else { %>
+              Open <%
+                       }
+                    %>
+            </td>
+            <td class="td-status">
+              <div class="status">
+                <div class="action-btn">
+                  <button class="btnEdit">
+                    <a href="/admin/account/payment-account-details/<%= account.account_number %>">
+                      <i style="
+                            margin: 3px 0px;
+                            color: #0051ffd3;
+                            font-size: 2vw;" class="fa fa-pencil"></i>
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  </div>
+  </div>
   </div>
 </body>
 
